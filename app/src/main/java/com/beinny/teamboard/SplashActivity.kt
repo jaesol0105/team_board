@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
         )
 
         val typeface: Typeface = Typeface.createFromAsset(assets, "carbon bl.ttf")
-        binding.tvAppName.typeface = typeface
+        binding.tvSplashAppName.typeface = typeface
 
         CoroutineScope(Dispatchers.Main).launch{
             delay(2500L)
