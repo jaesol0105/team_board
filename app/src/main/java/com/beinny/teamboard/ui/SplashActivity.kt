@@ -1,9 +1,8 @@
-package com.beinny.teamboard
+package com.beinny.teamboard.ui
 
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
-import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.beinny.teamboard.databinding.ActivitySplashBinding
