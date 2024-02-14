@@ -1,4 +1,4 @@
-package com.beinny.teamboard
+package com.beinny.teamboard.ui
 
 import android.content.Intent
 import android.graphics.Typeface
@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import com.beinny.teamboard.databinding.ActivityIntroBinding
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity() {
 
     private lateinit var binding: ActivityIntroBinding
 

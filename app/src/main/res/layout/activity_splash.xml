@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@color/splash_background"
         android:gravity="center"
-        tools:context=".SplashActivity">
+        tools:context=".ui.SplashActivity">
 
         <TextView
             android:id="@+id/tv_splash_app_name"

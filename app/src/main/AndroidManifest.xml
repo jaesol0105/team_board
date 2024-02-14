@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Teamboard">
         <activity
-            android:name="com.beinny.teamboard.SplashActivity"
+            android:name="com.beinny.teamboard.ui.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true">
@@ -21,19 +21,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".IntroActivity"
+        <activity android:name=".ui.IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".SignUpActivity"
+        <activity android:name=".ui.SignUpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".SignInActivity"
+        <activity android:name=".ui.SignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.MainActivity" />
     </application>
 
 </manifest>
