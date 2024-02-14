@@ -16,4 +16,6 @@
     <color name="secondary_text_color">#7A8089</color>
 
     <color name="splash_background">#3398F8</color>
+
+    <color name="snackbar_error_color">#F72400</color>
 </resources>
