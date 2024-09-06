@@ -21,31 +21,29 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /** [전체 화면] */
+        // 전체 화면
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        /** [폰트 설정] */
+        // 폰트 설정
         val typeface: Typeface = Typeface.createFromAsset(assets, "carbon bl.ttf")
         binding.tvSplashAppName.typeface = typeface
 
-        /** [로그인 된 사용자는 main으로, 로그인 안된 사용자는 intro로] */
+        /** 로그인 된 사용자는 main, 로그인 안된 사용자는 intro */
         CoroutineScope(Dispatchers.Main).launch{
             delay(1000L)
 
-            /** [현재 로그인 된 사용자 id] */
-            val currentUserID = FirestoreClass().getCurrentUserID()
+            val currentUserID = FirestoreClass().getCurrentUserID() // 현재 로그인 된 사용자 id
 
-            /** [공백이 아닐 경우 main] */
             if (currentUserID.isNotEmpty()) {
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             } else {
-                /** [공백일 경우 intro] */
                 startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
             }
-            finish() // 백버튼으로 돌아올 수 없음
+
+            finish() // 백버튼으로 돌아갈 수 없다
         }
     }
 }

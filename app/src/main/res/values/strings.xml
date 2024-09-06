@@ -1,23 +1,81 @@
 <resources>
     <string name="app_name">teamBoard</string>
 
-    <!-- Intro Activity-->
+    <!--intro-->
     <string name="image_contentDescription">image</string>
     <string name="let_s_get_started_text">Let\'s Get started</string>
     <string name="intro_text_description">Collaborate and Plan Together Across Multiple Devices on Projemanag’s Minimalist Interface.</string>
-    <string name="sign_in">SIGN IN</string>
-    <string name="sign_up">SIGN UP</string>
+    <string name="sign_in">로그인</string>
+    <string name="sign_up">가입하기</string>
 
-    <!-- Sign Up Activity-->
-    <string name="sign_up_description_text">Enter your name, email id and password, to register with us.</string>
-    <string name="name">Name</string>
-    <string name="password">Password</string>
-    <string name="email">Email</string>
+    <!--sign up-->
+    <string name="sign_up_description_text">이메일과 비밀번호를 입력하세요</string>
+    <string name="name">사용자 이름</string>
+    <string name="password">비밀번호</string>
+    <string name="email">이메일</string>
+    <string name="please_input_name">사용자 이름을 입력해주세요</string>
+    <string name="please_input_email">이메일을 입력해주세요</string>
+    <string name="please_input_password">비밀번호를 입력해주세요</string>
 
-    <!--Sign In Activity-->
-    <string name="sign_in_description_text">Enter your name, email id and password, to register with us.</string>
+    <!--sign in-->
+    <string name="sign_in_description_text">사용자 이름과 이메일, 비밀번호를 입력하세요</string>
 
-    <!--Progress Dialog-->
-    <string name="please_click_back_again_to_exit">Please click back again to exit.</string>
-    <string name="please_wait">Please Wait&#8230;</string>
+    <!--progress dialog-->
+    <string name="please_click_back_again_to_exit">한번 더 누르면 화면이 닫힙니다.</string>
+    <string name="please_wait">잠시만 기다려주세요&#8230;</string>
+
+    <!--nav-->
+    <string name="nav_my_profile">My Profile</string>
+    <string name="nav_sign_out">Sign Out</string>
+
+    <!--my profile-->
+    <string name="mobile">휴대폰 번호</string>
+    <string name="update">완료</string>
+    <string name="my_profile_title">프로필 편집</string>
+
+    <!--create board-->
+    <string name="create_board_title">새 보드 만들기</string>
+    <string name="create">생성</string>
+    <string name="board_name">Board</string>
+
+    <!--item board-->
+    <string name="no_boards_are_available">보드가 없습니다</string>
+
+    <!--item task-->
+    <string name="action_add_list">작업 목록 추가</string>
+    <string name="hint_list_name">제목 없음</string>
+    <string name="action_add_card">새 작업</string>
+    <string name="hint_card_name">Card Name</string>
+    <string name="add_list">Add List</string>
+    <string name="warning_message_delete_task">이 리스트를 삭제할까요? 되돌릴 수 없습니다</string>
+    <string name="delete">삭제</string>
+    <string name="cancle">취소</string>
+
+    <!--members-->
+    <string name="members">Members</string>
+
+    <!--add member-->
+    <string name="add_member">Add Member</string>
+    <string name="cancel">CANCEL</string>
+    <string name="add">ADD</string>
+    <string name="search_member">Search Member</string>
+
+    <!--card details-->
+    <string name="label_color">Label Color</string>
+    <string name="select_color">Select Color</string>
+    <string name="select_members">Select Members</string>
+    <string name="due_date">Due Date</string>
+    <string name="select_due_date">Select Due Date</string>
+    <string name="delete_card">Delete Card</string>
+    <string name="alert">알림</string>
+    <string name="confirmation_message_to_delete_card">카드를 삭제할까요 \'%1$s\'?</string>
+    <string name="yes">예</string>
+    <string name="no">아니오</string>
+
+    <!--item label color-->
+    <string name="str_select_label_color">Select Label Color</string>
+
+    <string name="str_select_member">Select Member</string>
+
+    <string name="default_notification_channel_id">teamboard_notification_channel_id</string>
 </resources>

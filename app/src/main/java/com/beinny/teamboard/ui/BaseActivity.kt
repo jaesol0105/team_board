@@ -12,13 +12,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 open class BaseActivity : AppCompatActivity() {
-
-    /** [back press 두 번] */
     private var doubleBackToExitPressedOnce = false
 
-    /** [progress bar dialog] */
-    private lateinit var mProgressDialog: Dialog
-
+    private lateinit var mProgressDialog: Dialog // 진행 바
     private lateinit var binding: DialogProgressBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +38,7 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog.dismiss()
     }
 
-    /** [현재 user uid] */
+    /** [현재 user uid 반환] */
     fun getCurrentUserID(): String {
         return FirebaseAuth.getInstance().currentUser!!.uid
     }

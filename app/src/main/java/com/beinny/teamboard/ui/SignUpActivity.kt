@@ -24,13 +24,12 @@ class SignUpActivity : BaseActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /** [전체 화면] */
+        // 전체 화면
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        /** [액션바 설정] */
         setupActionBar()
 
         binding.btnSignUp.setOnClickListener{
@@ -42,27 +41,26 @@ class SignUpActivity : BaseActivity() {
     private fun setupActionBar() {
         setSupportActionBar(binding.toolbarSignUp)
 
-        val actionBar = supportActionBar // 액션 바가 존재 하는 지 확인
+        val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true) // 뒤로 가기 버튼
             actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp) // 뒤로 가기 버튼 아이콘
         }
 
-        /** [내비게이션 버튼 클릭 : back] */
+        // 네비게이션 버튼 클릭 : 뒤로 가기
         binding.toolbarSignUp.setNavigationOnClickListener { onBackPressed() }
     }
 
-    /** [앱에서 회원 가입 : firebase] */
-    /** [https://firebase.google.com/docs/auth/android/custom-auth] */
+    /** [앱에서 회원 가입 : https://firebase.google.com/docs/auth/android/custom-auth] */
     private fun registerUser() {
-        /** [공백 제거 처리] */
+        // 공백 제거 처리
         val name: String = binding.etSignUpName.text.toString().trim { it <= ' ' }
         val email: String = binding.etSignUpEmail.text.toString().trim { it <= ' ' }
         val password: String = binding.etSignUpPassword.text.toString().trim { it <= ' ' }
 
-        /** [입력 정보 유효성 검사] */
+        // 입력 정보 유효성 검사
         if (validateForm(name, email, password)) {
-            showProgressDialog(resources.getString(R.string.please_wait)) // progress dialog 출력
+            showProgressDialog(resources.getString(R.string.please_wait))
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
                     OnCompleteListener<AuthResult> { task ->
@@ -71,7 +69,7 @@ class SignUpActivity : BaseActivity() {
                             val registeredEmail = firebaseUser.email!!
                             val user = User(firebaseUser.uid, name, registeredEmail)
 
-                            /** [firebase database에 사용자 등록] */
+                            /** firebase database에 사용자 등록 */
                             FirestoreClass().registerUser(this@SignUpActivity, user)
                         } else {
                             Toast.makeText(this@SignUpActivity, task.exception!!.message, Toast.LENGTH_SHORT).show()
@@ -84,15 +82,15 @@ class SignUpActivity : BaseActivity() {
     private fun validateForm(name: String, email: String, password: String): Boolean {
         return when {
             TextUtils.isEmpty(name) -> {
-                showErrorSnackBar("name을 입력해 주세요.")
+                showErrorSnackBar(getString(R.string.please_input_name))
                 false
             }
             TextUtils.isEmpty(email) -> {
-                showErrorSnackBar("Email을 입력해 주세요.")
+                showErrorSnackBar(getString(R.string.please_input_email))
                 false
             }
             TextUtils.isEmpty(password) -> {
-                showErrorSnackBar("password를 입력해 주세요.")
+                showErrorSnackBar(getString(R.string.please_input_password))
                 false
             }
             else -> {
@@ -103,10 +101,12 @@ class SignUpActivity : BaseActivity() {
 
     /** [firebase database에 사용자 등록 성공] */
     fun userRegisteredSuccess() {
-        Toast.makeText(this@SignUpActivity, "You have successfully registered.", Toast.LENGTH_SHORT).show()
-        hideProgressDialog() // progress bar 숨기기
+        Toast.makeText(this@SignUpActivity, "회원 가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+        hideProgressDialog()
 
-        FirebaseAuth.getInstance().signOut() // 로그아웃(사용자 등록할 때 자동으로 로그인 됨), intro로 보내서 재 로그인 하도록
-        finish() // signup 액티비티 종료
+        // TODO : 테스트해보고 정상작동되면 지우기
+        // 로그아웃 처리 (사용자 등록하면 자동으로 로그인 됨), intro로 보내서 재 로그인 하도록
+        // FirebaseAuth.getInstance().signOut()
+        finish() // 액티비티 종료
     }
 }

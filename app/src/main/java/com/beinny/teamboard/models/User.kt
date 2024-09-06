@@ -9,8 +9,10 @@ data class User(
     val email: String = "",
     val image: String = "",
     val mobile: Long = 0,
-    /** [firebase Cloud Messaging] */
-    val fcmToken: String = "" // fcmToken은 어플리케이션에서 사용자에게 푸시 알림을 줄 때 필요하다. fcmToken은 디바이스마다 다르게 부여 되는데, 서버는 이 토큰으로 디바이스를 구분한다. 이 토큰으로 구분하지 않는다면, 서버는 어떤 디바이스에 알림을 줘야하는 것인지 모르기 때문이다.
+    /** fcmToken은 어플리케이션에서 사용자에게 푸시 알림을 줄 때 필요하다.
+     * fcmToken은 디바이스마다 다르게 부여 되는데, 서버는 이 토큰으로 디바이스를 구분한다. */
+    val fcmToken: String = "",
+    var selected : Boolean = false
 ) : Parcelable {
     constructor(source: Parcel) : this(
         source.readString()!!,
