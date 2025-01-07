@@ -7,15 +7,26 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#7f7f7f</color>
+    <color name="white_dark">#f8f9f9</color>
+    <color name="blue_gray_light">#a2aab4</color>
+    <color name="blue_gray_dark">#2b3036</color>
+    <color name="default_background">#191919</color>
+    <color name="united_nations_blue">#2BA6F7</color>
+    <color name="transparent_black">#40000000</color>
+    <color name="transparent_white">#40FFFFFF</color>
+    <color name="blue">#0095f6</color>
+    <color name="deep_blue">#0064e0</color>
 
-    <color name="colorPrimary">#0C90F1</color>
-    <color name="colorPrimaryDark">#0591F8</color>
-    <color name="colorAccent">#0C90F1</color>
+
+    <color name="colorPrimary">#191919</color>
+    <color name="colorPrimaryDark">#191919</color>
+    <color name="colorAccent">#191919</color>
 
     <color name="primary_text_color">#363A43</color>
     <color name="secondary_text_color">#7A8089</color>
 
-    <color name="splash_background">#3398F8</color>
+    <color name="splash_background">#0d0d0d</color>
 
     <color name="snackbar_error_color">#F72400</color>
 
@@ -23,4 +34,8 @@
 
     <color name="task_list_action_color">#F7F6FA</color>
     <color name="task_list_title_view_bg_color">#F8F8F8</color>
+
+    <color name="board_text_color">#e1e1e1</color>
+    <color name="board_text_secondary_color">#7f7f7f</color>
+    <color name="board_divider_color">#2f2f2f</color>
 </resources>

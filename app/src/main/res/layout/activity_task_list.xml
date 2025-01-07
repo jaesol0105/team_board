@@ -16,20 +16,23 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="@dimen/toolbar_elevation">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_task_list_activity"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
+                app:elevation="@dimen/toolbar_elevation"
+                style="@style/CustomToolbarTitle"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/ic_background"
+            android:background="@color/default_background"
             android:padding="@dimen/task_list_content_padding">
 
             <androidx.recyclerview.widget.RecyclerView

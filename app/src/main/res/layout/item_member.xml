@@ -66,7 +66,7 @@
                 android:layout_gravity="center_vertical|end"
                 android:layout_marginEnd="@dimen/item_label_color_selected_image_marginEnd"
                 android:contentDescription="@string/image_contentDescription"
-                android:src="@drawable/ic_vector_color_accent_done_24dp"
+                android:src="@drawable/ic_done_24_blue"
                 app:visibility="@{user.selected}"
                 tools:visibility="visible" />
         </LinearLayout>

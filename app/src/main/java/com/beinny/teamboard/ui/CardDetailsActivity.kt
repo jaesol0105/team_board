@@ -3,10 +3,8 @@ package com.beinny.teamboard.ui
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -16,7 +14,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.beinny.teamboard.R
 import com.beinny.teamboard.adapters.CardMemberListAdapter
 import com.beinny.teamboard.databinding.ActivityCardDetailsBinding
-import com.beinny.teamboard.databinding.ItemCardBinding
 import com.beinny.teamboard.dialogs.LabelColorDialog
 import com.beinny.teamboard.dialogs.MembersListDialog
 import com.beinny.teamboard.firebase.FirestoreClass
@@ -112,7 +109,7 @@ class CardDetailsActivity : BaseActivity() {
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_back_24)
             actionBar.title = mBoardDetails.taskList[mTaskListPosition].cards[mCardPosition].name
         }
 

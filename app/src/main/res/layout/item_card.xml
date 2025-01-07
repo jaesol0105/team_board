@@ -38,7 +38,7 @@
                 android:id="@+id/rv_card_selected_members_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/card_details_value_marginTop"
+                android:layout_margin="@dimen/card_details_value_marginTop"
                 android:visibility="gone"
                 tools:visibility="visible"
                 tools:listitem="@layout/item_card_selected_member"
