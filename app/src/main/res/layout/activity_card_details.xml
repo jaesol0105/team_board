@@ -10,12 +10,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/default_background"
         android:orientation="vertical"
         tools:context=".ui.CardDetailsActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="@dimen/toolbar_elevation"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <androidx.appcompat.widget.Toolbar
@@ -23,13 +25,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
+                android:elevation="@dimen/toolbar_elevation"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
+            android:background="@color/default_background"
             android:orientation="vertical"
             android:padding="@dimen/card_details_content_padding">
 
@@ -37,7 +40,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/card_details_cv_card_name_marginBottom"
-                android:elevation="@dimen/card_view_elevation"
                 app:cardCornerRadius="@dimen/card_view_corner_radius">
 
                 <LinearLayout
@@ -49,7 +51,11 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        app:boxCornerRadiusBottomEnd="@dimen/text_input_corner_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/text_input_corner_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/text_input_corner_radius"
+                        app:boxCornerRadiusTopStart="@dimen/text_input_corner_radius">
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/et_name_card_details"
@@ -67,7 +73,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:elevation="@dimen/card_view_elevation"
                 app:cardCornerRadius="@dimen/card_view_corner_radius">
 
                 <LinearLayout
@@ -133,7 +138,7 @@
                         android:layout_marginTop="@dimen/card_details_value_marginTop"
                         android:padding="@dimen/card_details_value_padding"
                         android:text="@string/select_due_date"
-                        android:textColor="@color/primary_text_color" />
+                        style="@style/CustomBodyText" />
 
                     <Button
                         android:id="@+id/btn_update_card_details"
@@ -141,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="@dimen/card_details_update_btn_marginTop"
-                        android:background="@drawable/shape_button_rounded"
+                        android:background="@drawable/bg_btn_round_blue"
                         android:foreground="?attr/selectableItemBackground"
                         android:gravity="center"
                         android:paddingTop="@dimen/btn_paddingTopBottom"

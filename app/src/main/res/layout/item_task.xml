@@ -57,7 +57,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:contentDescription="@string/image_contentDescription"
                         android:padding="@dimen/task_item_image_buttons_padding"
-                        android:src="@drawable/ic_cancel" />
+                        android:src="@drawable/ic_mini_cancel" />
 
                     <EditText
                         android:id="@+id/et_task_list_name"
@@ -75,7 +75,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:contentDescription="@string/image_contentDescription"
                         android:padding="@dimen/task_item_image_buttons_padding"
-                        android:src="@drawable/ic_done" />
+                        android:src="@drawable/ic_mini_done" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -118,7 +118,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:contentDescription="@string/image_contentDescription"
                         android:padding="@dimen/task_item_image_buttons_padding"
-                        android:src="@drawable/ic_edit" />
+                        android:src="@drawable/ic_mini_edit" />
 
                     <ImageButton
                         android:id="@+id/ib_delete_task_list"
@@ -127,7 +127,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:contentDescription="@string/image_contentDescription"
                         android:padding="@dimen/task_item_image_buttons_padding"
-                        android:src="@drawable/ic_delete" />
+                        android:src="@drawable/ic_mini_delete" />
                 </LinearLayout>
 
                 <View
@@ -158,7 +158,7 @@
                             android:background="?attr/selectableItemBackground"
                             android:contentDescription="@string/image_contentDescription"
                             android:padding="@dimen/task_item_image_buttons_padding"
-                            android:src="@drawable/ic_cancel" />
+                            android:src="@drawable/ic_mini_cancel" />
 
                         <EditText
                             android:id="@+id/et_task_list_name_editable"
@@ -176,7 +176,7 @@
                             android:background="?attr/selectableItemBackground"
                             android:contentDescription="@string/image_contentDescription"
                             android:padding="@dimen/task_item_image_buttons_padding"
-                            android:src="@drawable/ic_done" />
+                            android:src="@drawable/ic_mini_done" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -209,7 +209,7 @@
                             android:background="?attr/selectableItemBackground"
                             android:contentDescription="@string/image_contentDescription"
                             android:padding="@dimen/task_item_image_buttons_padding"
-                            android:src="@drawable/ic_cancel" />
+                            android:src="@drawable/ic_mini_cancel" />
 
                         <EditText
                             android:id="@+id/et_card_name"
@@ -227,7 +227,7 @@
                             android:background="?attr/selectableItemBackground"
                             android:contentDescription="@string/image_contentDescription"
                             android:padding="@dimen/task_item_image_buttons_padding"
-                            android:src="@drawable/ic_done" />
+                            android:src="@drawable/ic_mini_done" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

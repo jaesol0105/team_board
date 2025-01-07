@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.beinny.teamboard.R
-import com.beinny.teamboard.databinding.DialogProgressBinding
+import com.beinny.teamboard.databinding.DialogLoadingBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
@@ -15,7 +15,7 @@ open class BaseActivity : AppCompatActivity() {
     private var doubleBackToExitPressedOnce = false
 
     private lateinit var mProgressDialog: Dialog // 진행 바
-    private lateinit var binding: DialogProgressBinding
+    private lateinit var binding: DialogLoadingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ open class BaseActivity : AppCompatActivity() {
     fun showProgressDialog(text: String) {
         mProgressDialog = Dialog(this)
 
-        binding = DialogProgressBinding.inflate(layoutInflater)
+        binding = DialogLoadingBinding.inflate(layoutInflater)
         mProgressDialog.setContentView(binding.root)
 
         binding.tvProgressText.text = text

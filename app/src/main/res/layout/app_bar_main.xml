@@ -16,6 +16,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:elevation="0dp"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <androidx.appcompat.widget.Toolbar
@@ -23,20 +24,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:elevation="0dp"
+                app:title="@string/team_board"
+                app:titleTextAppearance="@style/CustomToolbarTitleMain" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include android:id="@+id/content_main"
+        <include
+            android:id="@+id/content_main"
             layout="@layout/content_main" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fab_create_board"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/ic_vector_add_24dp" />
+            android:drawableLeft="@drawable/ic_add_24"
+            android:drawableTint="@color/black"
+            android:text="Create Board" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -9,20 +9,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/intro_background"
+        android:background="@color/default_background"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         tools:context=".ui.IntroActivity">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style=""/>
 
         <TextView
             android:id="@+id/tv_intro_app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/intro_screen_title_text_marginTop"
-            android:text="@string/app_name"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/intro_screen_title_text_size"
-            android:textStyle="bold" />
+            android:text="@string/team_board"
+            style="@style/CustomToolbarTitleMain"
+            android:textColor="@color/white"
+            android:textSize="@dimen/intro_screen_title_text_size" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -36,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/lets_get_started_text_marginTop"
             android:text="@string/let_s_get_started_text"
-            android:textColor="@color/primary_text_color"
+            android:textColor="@color/white"
             android:textSize="@dimen/lets_get_started_text_size" />
 
         <TextView
@@ -48,7 +53,7 @@
             android:gravity="center"
             android:lineSpacingExtra="@dimen/intro_text_line_spacing_extra"
             android:text="@string/intro_text_description"
-            android:textColor="@color/secondary_text_color"
+            android:textColor="@color/white_dark"
             android:textSize="@dimen/intro_text_size" />
 
         <Button
@@ -59,7 +64,7 @@
             android:layout_marginStart="@dimen/btn_marginStartEnd"
             android:layout_marginTop="@dimen/intro_screen_sign_in_btn_marginTop"
             android:layout_marginEnd="@dimen/btn_marginStartEnd"
-            android:background="@drawable/shape_button_rounded"
+            android:background="@drawable/bg_btn_round_blue"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:paddingTop="@dimen/btn_paddingTopBottom"
@@ -76,13 +81,13 @@
             android:layout_marginStart="@dimen/btn_marginStartEnd"
             android:layout_marginTop="@dimen/intro_screen_sign_up_btn_marginTop"
             android:layout_marginEnd="@dimen/btn_marginStartEnd"
-            android:background="@drawable/white_border_shape_button_rounded"
+            android:background="@drawable/bg_btn_round_blue"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:paddingTop="@dimen/btn_paddingTopBottom"
             android:paddingBottom="@dimen/btn_paddingTopBottom"
             android:text="@string/sign_up"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/white"
             android:textSize="@dimen/btn_text_size" />
     </LinearLayout>
 </layout>

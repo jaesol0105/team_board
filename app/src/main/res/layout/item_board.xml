@@ -25,6 +25,13 @@
             android:orientation="horizontal"
             android:padding="@dimen/item_board_content_padding">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_right_24"
+                android:layout_height="wrap_content"
+                app:tint="@color/board_text_secondary_color"
+                android:layout_marginRight="16dp" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_item_board_image"
                 android:layout_width="@dimen/item_board_image_size"
@@ -46,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{board.name}"
-                    android:textColor="@color/primary_text_color"
+                    android:textColor="@color/board_text_color"
                     android:textSize="@dimen/item_board_name_text_size"
                     tools:text="Board Name" />
 
@@ -54,7 +61,7 @@
                     android:id="@+id/tv_item_board_created_by"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondary_text_color"
+                    android:textColor="@color/board_text_secondary_color"
                     android:textSize="@dimen/item_board_created_by_text_size"
                     app:createdBy="@{board.createdBy}"
                     tools:text="Created By" />
@@ -65,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_board_divider_height"
             android:layout_marginTop="@dimen/item_board_divider_marginTop"
-            android:background="@color/divider_color" />
+            android:background="@color/board_divider_color" />
 
     </LinearLayout>
 </layout>

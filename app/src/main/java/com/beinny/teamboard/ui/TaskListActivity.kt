@@ -73,7 +73,7 @@ class TaskListActivity : BaseActivity() {
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_back_arrow_30)
             actionBar.title = mBoardDetails.name
         }
 

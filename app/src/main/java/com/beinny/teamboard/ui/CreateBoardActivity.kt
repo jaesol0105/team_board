@@ -72,8 +72,7 @@ class CreateBoardActivity : BaseActivity() {
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
-            actionBar.title = resources.getString(R.string.create_board_title)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_keyboard_backspace_24)
         }
 
         binding.toolbarCreateBoard.setNavigationOnClickListener { onBackPressed() }

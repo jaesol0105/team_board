@@ -10,13 +10,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_background"
+        android:background="@color/default_background"
         android:orientation="vertical"
         tools:context=".ui.SignInActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_sign_in"
             android:layout_width="match_parent"
+            android:elevation="@dimen/toolbar_elevation"
             android:layout_height="?attr/actionBarSize">
 
             <TextView
@@ -25,9 +26,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="@string/sign_in"
-                android:textColor="@color/primary_text_color"
-                android:textSize="@dimen/toolbar_title_text_size"
-                android:textStyle="bold" />
+                style="@style/CustomToolbarTitle"
+                android:textColor="@color/white" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -100,7 +100,7 @@
                         android:layout_marginStart="@dimen/btn_marginStartEnd"
                         android:layout_marginTop="@dimen/sign_up_screen_btn_marginTop"
                         android:layout_marginEnd="@dimen/btn_marginStartEnd"
-                        android:background="@drawable/shape_button_rounded"
+                        android:background="@drawable/bg_btn_round_blue"
                         android:foreground="?attr/selectableItemBackground"
                         android:gravity="center"
                         android:paddingTop="@dimen/btn_paddingTopBottom"

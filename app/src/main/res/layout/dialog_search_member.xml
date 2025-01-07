@@ -13,7 +13,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/shape_dialog_rounded"
+            app:cardBackgroundColor="@android:color/transparent"
+            android:background="@drawable/bg_dialog_round_white"
             app:cardCornerRadius="@dimen/dialog_member_cv_cornerRadius"
             app:cardElevation="@dimen/dialog_member_cv_elevation">
 
