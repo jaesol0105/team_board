@@ -1,9 +1,7 @@
 package com.beinny.teamboard.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import com.beinny.teamboard.R
@@ -44,7 +42,7 @@ class SignUpActivity : BaseActivity() {
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true) // 뒤로 가기 버튼
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp) // 뒤로 가기 버튼 아이콘
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_back_24_black) // 뒤로 가기 버튼 아이콘
         }
 
         // 네비게이션 버튼 클릭 : 뒤로 가기

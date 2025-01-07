@@ -26,7 +26,7 @@
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="@dimen/item_label_color_selected_image_marginEnd"
             android:contentDescription="@string/image_contentDescription"
-            android:src="@drawable/ic_vector_white_done_24dp"
+            android:src="@drawable/ic_done_24"
             android:visibility="gone"
             tools:visibility="visible" />
     </FrameLayout>

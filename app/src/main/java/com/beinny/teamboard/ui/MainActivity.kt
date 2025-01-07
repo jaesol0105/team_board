@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.Context
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.core.view.GravityCompat
@@ -36,8 +38,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setContentView(binding.root)
         setupActionBar()
 
-        // 네비게이션 리스너 설정
+        // 네비게이션 리스너 설정 및 속성
         binding.navViewMain.setNavigationItemSelectedListener(this)
+        val width = resources.displayMetrics.widthPixels
+        binding.navViewMain.layoutParams.width = width
+
+        val headerBinding: NavHeaderMainBinding = DataBindingUtil.bind(binding.navViewMain.getHeaderView(0))!!
+        headerBinding.ivNavHeaderBackArrow.setOnClickListener {
+            toggleDrawer()
+        }
 
         mSharedPreferences = this.getSharedPreferences(Constants.TEAMBOARD_PREFERENCES, Context.MODE_PRIVATE)
         val tokenUpdated = mSharedPreferences.getBoolean(Constants.FCM_TOKEN_UPDATED, false)
@@ -55,8 +64,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     /** [백 프레스] */
     override fun onBackPressed() {
         // Navigation Drawer 열려 있으면 닫기
-        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START))
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.END))
+            binding.drawerLayout.closeDrawer(GravityCompat.END)
         // 닫혀 있으면 뒤로 가기
         else
             doubleBackToExit()
@@ -82,7 +91,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 finish()
             }
         }
-        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        binding.drawerLayout.closeDrawer(GravityCompat.END)
         return true
     }
 
@@ -102,24 +111,40 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_toolbar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_drawer -> {
+                toggleDrawer()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     /** [액션바 설정] */
     private fun setupActionBar() {
         setSupportActionBar(binding.appBarMain.toolbarMainActivity)
+
         // 액션 바에 네비게이션 아이콘 적용
-        binding.appBarMain.toolbarMainActivity.setNavigationIcon(R.drawable.ic_action_navigation_menu)
+        //binding.appBarMain.toolbarMainActivity.setNavigationIcon(R.drawable.ic_action_navigation_menu)
 
         // 네비게이션 아이콘에 리스너 설정
-        binding.appBarMain.toolbarMainActivity.setNavigationOnClickListener {
-            toggleDrawer()
-        }
+        //binding.appBarMain.toolbarMainActivity.setNavigationOnClickListener {
+        //    toggleDrawer()
+        //}
     }
 
     /** [Navigation Drawer 열기,닫기] */
     private fun toggleDrawer() {
-        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.END)
         } else {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
+            binding.drawerLayout.openDrawer(GravityCompat.END)
         }
     }
 

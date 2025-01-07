@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -15,4 +15,48 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CustomToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomToolbarTitleMain" parent="CustomToolbarTitle">
+        <item name="android:fontFamily">@font/carbonbl</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="Widget.Teamboard.TextInputLayout.FilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="endIconMode">custom</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <item name="boxStrokeColor">@android:color/transparent</item> <!--Focus 상태일때 밑줄 색-->
+        <item name="colorControlNormal">@android:color/transparent</item>  <!--unFocus 상태일때 밑줄 색-->
+        <item name="android:textColorHint">@color/blue_gray_light</item>  <!--hint 색-->
+        <item name="hintTextColor">@color/blue_gray_light</item>   <!--floating hint 색-->
+        <item name="android:textCursorDrawable">@color/colorAccent</item>  <!--cursor 색-->
+        <item name="helperTextTextColor">@color/blue_gray_light</item>
+        <item name="android:theme">@style/ThemeOverlay.Eggeum.TextInputLayout.CursorColor</item>
+    </style>
+
+    <style name="ThemeOverlay.Eggeum.TextInputLayout.CursorColor" parent="ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="colorControlActivated">@color/teal_200</item>
+        <item name="android:textColorHighlight">@color/teal_200</item>
+    </style>
+
+    <style name="EditTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/teal_200</item>
+    </style>
+
+    <style name="CustomNavigationDrawerText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/white</item> <!-- 텍스트 색상 -->
+        <item name="android:textSize">16sp</item> <!-- 텍스트 크기 -->
+    </style>
+
+    <style name="CustomBodyText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/united_nations_blue</item> <!-- 텍스트 색상 -->
+        <item name="android:textSize">14sp</item> <!-- 텍스트 크기 -->
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

@@ -5,6 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.beinny.teamboard.R
 import com.beinny.teamboard.databinding.ActivityMyProfileBinding
@@ -48,6 +50,26 @@ class MyProfileActivity : BaseActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_my_profile, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.done -> {
+                if (mSelectedImageFileUri != null) {
+                    uploadUserImage()
+                } else {
+                    showProgressDialog(resources.getString(R.string.please_wait))
+                    updateUserProfileData()
+                }
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         /** 프로필 이미지 선택 : 갤러리 인텐트 */
@@ -73,7 +95,7 @@ class MyProfileActivity : BaseActivity() {
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_back_24)
             actionBar.title = resources.getString(R.string.my_profile_title)
         }
 
