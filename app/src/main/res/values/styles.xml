@@ -10,21 +10,26 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/default_background</item>
+        <item name="android:navigationBarColor" >@color/default_background</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- 상단바 제목 -->
     <style name="CustomToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- 메인 화면 상단바 제목 -->
     <style name="CustomToolbarTitleMain" parent="CustomToolbarTitle">
         <item name="android:fontFamily">@font/carbonbl</item>
         <item name="android:textSize">25sp</item>
     </style>
 
+    <!-- 입력 칸 -->
     <style name="Widget.Teamboard.TextInputLayout.FilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="boxStrokeWidth">0dp</item>
@@ -35,6 +40,7 @@
         <item name="colorControlNormal">@android:color/transparent</item>  <!--unFocus 상태일때 밑줄 색-->
         <item name="android:textColorHint">@color/blue_gray_light</item>  <!--hint 색-->
         <item name="hintTextColor">@color/blue_gray_light</item>   <!--floating hint 색-->
+        <item name="hintAnimationEnabled">false</item>
         <item name="android:textCursorDrawable">@color/colorAccent</item>  <!--cursor 색-->
         <item name="helperTextTextColor">@color/blue_gray_light</item>
         <item name="android:theme">@style/ThemeOverlay.Eggeum.TextInputLayout.CursorColor</item>
@@ -49,14 +55,46 @@
         <item name="colorAccent">@color/teal_200</item>
     </style>
 
+    <!-- Drawer 네비게이션 폰트-->
     <style name="CustomNavigationDrawerText" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/white</item> <!-- 텍스트 색상 -->
         <item name="android:textSize">16sp</item> <!-- 텍스트 크기 -->
     </style>
 
+    <!-- CardDetail : 터치 가능한 파란 글씨 -->
     <style name="CustomBodyText" parent="TextAppearance.AppCompat.Body1">
-        <item name="android:textColor">@color/united_nations_blue</item> <!-- 텍스트 색상 -->
-        <item name="android:textSize">14sp</item> <!-- 텍스트 크기 -->
+        <item name="android:textColor">@color/united_nations_blue</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 온보딩 -->
+    <style name="OnBoardingDialog" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.72</item>
+    </style>
+
+    <!-- DateTimePicker -->
+    <style name="TextSubtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/fromm_3</item>
+    </style>
+
+    <style name="Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/fromm_3</item>
+    </style>
+
+    <style name="Headline6.Bold" parent="Headline6">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="dateTimePicker">
+        <item name="android:textColorPrimary">@color/fromm_3</item>
+        <item name="android:colorControlNormal">@color/fromm_3</item>
+    </style>
+
+    <style name="TextMedium.Bold" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/fromm_3</item>
     </style>
 </resources>

@@ -8,13 +8,13 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardBackgroundColor="@android:color/transparent"
-            android:background="@drawable/bg_dialog_round_white"
+            android:backgroundTint="@color/fromm_5"
             app:cardCornerRadius="@dimen/dialog_member_cv_cornerRadius"
             app:cardElevation="@dimen/dialog_member_cv_elevation">
 
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/dialog_member_title_padding"
                     android:text="@string/search_member"
-                    android:textColor="@color/primary_text_color"
+                    android:textColor="@color/fromm_3"
                     android:textSize="@dimen/dialog_member_title_text_size"
                     android:textStyle="bold" />
 
@@ -40,19 +40,23 @@
                     android:layout_height="@dimen/member_dialog_divider_height"
                     android:layout_marginTop="@dimen/member_dialog_divider_marginTopBottom"
                     android:layout_marginBottom="@dimen/member_dialog_divider_marginTopBottom"
-                    android:background="@color/divider_color" />
+                    android:background="@color/fromm_5" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Teamboard.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/member_dialog_til_email_marginTop">
+                    android:layout_marginTop="@dimen/member_dialog_til_email_marginTop"
+                    app:helperTextTextColor="@color/fromm_3">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et_email_search_member"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/email"
+                        android:background="@drawable/bg_input_border_round"
+                        android:hint="@string/search_email"
                         android:inputType="textEmailAddress"
+                        android:textColor="@color/fromm_4"
                         android:textSize="@dimen/et_text_size" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,8 +74,8 @@
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center"
                         android:padding="@dimen/member_dialog_action_button_padding"
-                        android:text="@string/add"
-                        android:textColor="@color/colorAccent"
+                        android:text="@string/add_member_action_invite"
+                        android:textColor="@color/blue"
                         android:textSize="@dimen/member_dialog_action_button_text_size" />
 
                     <TextView
@@ -83,7 +87,7 @@
                         android:gravity="center"
                         android:padding="@dimen/member_dialog_action_button_padding"
                         android:text="@string/cancel"
-                        android:textColor="@color/secondary_text_color"
+                        android:textColor="@color/fromm_4"
                         android:textSize="@dimen/member_dialog_action_button_text_size" />
                 </LinearLayout>
             </LinearLayout>

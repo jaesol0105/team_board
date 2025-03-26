@@ -11,9 +11,10 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity">
+        tools:context=".ui.home.MainActivity">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:elevation="0dp"
@@ -26,14 +27,50 @@
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 app:elevation="0dp"
+                app:contentInsetStart="20dp"
+                app:contentInsetEnd="20dp"
+                app:layout_scrollFlags="scroll|enterAlways"
                 app:title="@string/team_board"
                 app:titleTextAppearance="@style/CustomToolbarTitleMain" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <View
+            android:id="@+id/toolbar_divider"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_board_divider_height"
+            android:visibility="gone"
+            android:background="@color/board_divider_color" />
+
+
         <include
             android:id="@+id/content_main"
             layout="@layout/content_main" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/board_divider_color" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation_view"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:menu="@menu/menu_bottom_nav"
+                android:background="@color/default_background"
+                app:itemIconSize="24dp"
+                app:labelVisibilityMode="unlabeled"
+                app:itemIconTint="@color/white"
+                app:itemTextColor="@color/white" />
+
+        </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fab_create_board"
@@ -41,8 +78,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
+            android:visibility="gone"
             android:drawableLeft="@drawable/ic_add_24"
-            android:drawableTint="@color/black"
+            android:drawableTint="@color/default_background"
+            android:textColor="@color/default_background"
+            android:backgroundTint="@color/fab_blue"
             android:text="Create Board" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

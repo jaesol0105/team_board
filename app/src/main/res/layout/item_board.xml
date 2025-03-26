@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="board"
             type="com.beinny.teamboard.models.Board" />
@@ -23,20 +22,25 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/item_board_content_padding">
+            android:paddingLeft="@dimen/item_board_content_padding"
+            android:paddingRight="@dimen/item_board_content_padding"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:src="@drawable/ic_right_24"
                 android:layout_height="wrap_content"
-                app:tint="@color/board_text_secondary_color"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="12dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_right_30"
+                app:tint="@color/board_text_color" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_item_board_image"
                 android:layout_width="@dimen/item_board_image_size"
                 android:layout_height="@dimen/item_board_image_size"
-                android:contentDescription="@string/image_contentDescription"
+                android:layout_marginStart="4dp"
+                android:contentDescription="@string/intro_image_content_description"
                 android:src="@drawable/ic_board_place_holder"
                 app:civ_border_color="@color/primary_text_color"
                 app:civ_border_width="@dimen/item_board_image_circular_border_width"
@@ -45,7 +49,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/item_board_name_layout_marginStart"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
@@ -66,9 +71,36 @@
                     app:createdBy="@{board.createdBy}"
                     tools:text="Created By" />
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/ic_more_vert_24_"
+                android:layout_marginEnd="8dp"
+                app:tint="@color/board_text_color" />
+
+            <ImageView
+                android:id="@+id/iv_item_board_bookmark_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bookmark_24"
+                app:visibilityOff="@{board.bookmarked}"
+                app:tint="@color/board_text_color" />
+
+            <ImageView
+                android:id="@+id/iv_item_board_bookmark_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bookmark_filled_24"
+                android:visibility="gone"
+                app:visibility="@{board.bookmarked}"
+                app:tint="@color/board_text_color" />
+
         </LinearLayout>
 
         <View
+            android:id="@+id/view_divider"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_board_divider_height"
             android:layout_marginTop="@dimen/item_board_divider_marginTop"

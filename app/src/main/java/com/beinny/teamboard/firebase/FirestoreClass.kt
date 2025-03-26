@@ -2,30 +2,27 @@ package com.beinny.teamboard.firebase
 
 import android.app.Activity
 import android.util.Log
-import android.widget.Toast
 import com.beinny.teamboard.models.Board
-import com.beinny.teamboard.models.Task
 import com.beinny.teamboard.models.User
-import com.beinny.teamboard.ui.CardDetailsActivity
-import com.beinny.teamboard.ui.CreateBoardActivity
-import com.beinny.teamboard.ui.MainActivity
-import com.beinny.teamboard.ui.MembersActivity
-import com.beinny.teamboard.ui.MyProfileActivity
-import com.beinny.teamboard.ui.SignInActivity
-import com.beinny.teamboard.ui.SignUpActivity
-import com.beinny.teamboard.ui.TaskListActivity
+import com.beinny.teamboard.ui.carddetails.CardDetailsActivity
+import com.beinny.teamboard.ui.home.createboard.CreateBoardActivity
+import com.beinny.teamboard.ui.home.MainActivity
+import com.beinny.teamboard.ui.tasklist.MembersActivity
+import com.beinny.teamboard.ui.myprofile.MyProfileActivity
+import com.beinny.teamboard.ui.login.SignInActivity
+import com.beinny.teamboard.ui.login.SignUpActivity
+import com.beinny.teamboard.ui.tasklist.TaskListActivity
 import com.beinny.teamboard.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
-/** [Firebase database] */
 class FirestoreClass {
 
     /** [Firestore 인스턴스] */
     private val mFireStore = FirebaseFirestore.getInstance()
 
-    /** [현재 로그인 된 유저의 아이디 반환] */
+    /** [현재 로그인 된 아이디 반환] */
     fun getCurrentUserID(): String {
         val currentUser = FirebaseAuth.getInstance().currentUser
 
@@ -37,9 +34,8 @@ class FirestoreClass {
         return currentUserID
     }
 
-    /** [새 사용자를 데이터베이스에 등록] */
+    /** [새 사용자를 데이터베이스에 등록 : users/UID] */
     fun registerUser(activity: SignUpActivity, userInfo: User) {
-        // users/UID에 사용자 정보를 등록
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserID()) // UID
             .set(userInfo, SetOptions.merge()) // SetOptions.merge : 기존 데이터와 병합
@@ -51,7 +47,7 @@ class FirestoreClass {
             }
     }
 
-    /** [Firebase로 부터 로그인 된 사용자 정보 불러오기] */
+    /** [로그인 된 사용자 정보 불러오기] */
     fun loadUserData(activity: Activity,isToReadBoardsList: Boolean = false) {
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserID()) // 현재 로그인 된 UID
@@ -59,8 +55,7 @@ class FirestoreClass {
             .addOnSuccessListener { document ->
                 Log.e(activity.javaClass.simpleName, document.toString())
 
-                // document.toObject : 정보를 원하는 객체(User)에 맵핑
-                val loggedInUser = document.toObject(User::class.java)
+                val loggedInUser = document.toObject(User::class.java) // document.toObject : 정보를 원하는 객체(User)에 맵핑
                 if (loggedInUser != null) {
                     when (activity) {
                         is SignInActivity -> {
@@ -90,7 +85,7 @@ class FirestoreClass {
             }
     }
 
-    /** [데이터베이스에 프로필 변경사항 반영]
+    /** [프로필 변경사항 데이터베이스에 반영]
      * @param userHashMap 업데이트 할 필드의 해시 맵 */
     fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
         mFireStore.collection(Constants.USERS)
@@ -121,7 +116,7 @@ class FirestoreClass {
             }
     }
 
-    /** [데이터베이스에 보드 테이블을 생성하고 엔트리를 추가] */
+    /** [보드 테이블을 데이터베이스에 생성] */
     fun createBoard(activity: CreateBoardActivity, board: Board) {
         mFireStore.collection(Constants.BOARDS)
             .document()
@@ -135,7 +130,7 @@ class FirestoreClass {
             }
     }
 
-    /** [데이터베이스에서 보드 목록 불러오기] */
+    /** [보드 목록 불러오기] */
     fun getBoardsList(activity: MainActivity) {
         mFireStore.collection(Constants.BOARDS) // Firestore DB의 boards 컬렉션 참조
             // 현재 사용자가 멤버로 참여하고있는 보드 목록을 요구하는 배열 쿼리
@@ -162,6 +157,7 @@ class FirestoreClass {
 
     /** [보드 디테일 정보 불러오기] */
     fun getBoardDetails(activity: TaskListActivity, documentId: String) {
+        Log.d("did111",documentId)
         mFireStore.collection(Constants.BOARDS)
             .document(documentId)
             .get()
@@ -282,4 +278,20 @@ class FirestoreClass {
             }
     }
 
+    /** [유저의 북마크 목록 생신] */
+    fun userBookmarkOnOff(activity: MainActivity, userId: String, bookmarkBoards:ArrayList<String>) {
+        val bookmarkToHashMap = HashMap<String,Any>()
+        bookmarkToHashMap[Constants.BOOKMARKED_BOARDS] = bookmarkBoards
+
+        mFireStore.collection(Constants.USERS)
+            .document(userId)
+            .update(bookmarkToHashMap)
+            .addOnSuccessListener {
+                Log.e(activity.javaClass.simpleName, "Bookmark updated successfully.")
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, "Error while bookmark.", e)
+            }
+    }
 }

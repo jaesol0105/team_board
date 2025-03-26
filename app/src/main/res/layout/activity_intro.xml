@@ -12,7 +12,7 @@
         android:background="@color/default_background"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        tools:context=".ui.IntroActivity">
+        tools:context=".ui.login.IntroActivity">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -33,14 +33,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/intro_screen_image_marginTop"
-            android:contentDescription="@string/image_contentDescription"
+            android:contentDescription="@string/intro_image_content_description"
             android:src="@drawable/ic_task_image" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/lets_get_started_text_marginTop"
-            android:text="@string/let_s_get_started_text"
+            android:text="@string/intro_started_text"
             android:textColor="@color/white"
             android:textSize="@dimen/lets_get_started_text_size" />
 
@@ -52,7 +52,7 @@
             android:layout_marginEnd="@dimen/intro_text_marginStartEnd"
             android:gravity="center"
             android:lineSpacingExtra="@dimen/intro_text_line_spacing_extra"
-            android:text="@string/intro_text_description"
+            android:text="@string/intro_started_text_description"
             android:textColor="@color/white_dark"
             android:textSize="@dimen/intro_text_size" />
 

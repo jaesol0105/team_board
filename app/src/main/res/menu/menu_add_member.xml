@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_add_member"
-        android:icon="@drawable/ic_add_24"
+        android:icon="@drawable/ic_add_30"
         android:orderInCategory="100"
-        android:title="@string/add_member"
-        app:showAsAction="always">
-    </item>
+        android:title="@string/add_member_menu_id"
+        app:showAsAction="always" />
 </menu>

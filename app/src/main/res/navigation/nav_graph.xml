@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/boardListFragment">
+
+    <!-- 보드 목록 -->
+    <fragment
+        android:id="@+id/boardListFragment"
+        android:name="com.beinny.teamboard.ui.home.boardList.BoardListFragment"
+        android:label="BoardList"
+        tools:layout="@layout/fragment_board_list" />
+
+    <!-- 북마크 -->
+    <fragment
+        android:id="@+id/bookMarkFragment"
+        android:name="com.beinny.teamboard.ui.home.bookmark.BookmarkFragment"
+        android:label="BookMark"
+        tools:layout="@layout/fragment_bookmark" />
+
+    <!-- 알림 -->
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.beinny.teamboard.ui.home.notification.NotificationFragment"
+        android:label="Notification"
+        tools:layout="@layout/fragment_notification" />
+
+</navigation>

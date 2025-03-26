@@ -7,6 +7,8 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.beinny.teamboard.databinding.ActivitySplashBinding
 import com.beinny.teamboard.firebase.FirestoreClass
+import com.beinny.teamboard.ui.home.MainActivity
+import com.beinny.teamboard.ui.login.IntroActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

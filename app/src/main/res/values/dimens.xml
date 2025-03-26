@@ -58,8 +58,8 @@
     <dimen name="my_profile_screen_content_padding">16dp</dimen>
     <dimen name="my_profile_user_image_size">100dp</dimen>
     <dimen name="my_profile_name_til_marginTop">25dp</dimen>
-    <dimen name="my_profile_et_email_marginTop">10dp</dimen>
-    <dimen name="my_profile_et_mobile_marginTop">10dp</dimen>
+    <dimen name="my_profile_et_email_marginTop">15dp</dimen>
+    <dimen name="my_profile_et_mobile_marginTop">15dp</dimen>
     <dimen name="my_profile_btn_update_marginTop">30dp</dimen>
 
     <!--create board-->
@@ -70,11 +70,11 @@
     <dimen name="create_board_btn_marginTop">30dp</dimen>
 
     <!--item board-->
-    <dimen name="main_screen_content_padding">16dp</dimen>
+    <dimen name="main_screen_content_padding">12dp</dimen>
     <dimen name="no_boards_available_text_size">16sp</dimen>
     <dimen name="item_board_content_marginBottom">10dp</dimen>
-    <dimen name="item_board_content_padding">16dp</dimen>
-    <dimen name="item_board_image_size">40dp</dimen>
+    <dimen name="item_board_content_padding">8dp</dimen>
+    <dimen name="item_board_image_size">45dp</dimen>
     <dimen name="item_board_image_circular_border_width">0.5dp</dimen>
     <dimen name="item_board_name_layout_marginStart">10dp</dimen>
     <dimen name="item_board_name_text_size">18sp</dimen>
@@ -89,20 +89,20 @@
     <dimen name="task_item_cv_elevation">5dp</dimen>
     <dimen name="task_item_add_item_text_padding">12dp</dimen>
     <dimen name="task_item_add_item_text_size">18sp</dimen>
-    <dimen name="task_item_cv_margin">5dp</dimen>
-    <dimen name="task_item_cv_corner_radius">5dp</dimen>
+    <dimen name="task_item_cv_margin">10dp</dimen>
+    <dimen name="task_item_cv_corner_radius">12dp</dimen>
     <dimen name="task_item_image_buttons_padding">10dp</dimen>
     <dimen name="task_item_title_view_elevation">10dp</dimen>
     <dimen name="task_item_title_text_padding">10dp</dimen>
     <dimen name="task_item_title_text_size">16sp</dimen>
     <dimen name="task_item_divider_height">0.5dp</dimen>
-    <dimen name="task_item_rv_card_list_margin">5dp</dimen>
+    <dimen name="task_item_rv_card_list_margin">4dp</dimen>
     <dimen name="task_item_add_card_text_elevation">10dp</dimen>
 
     <!--item card-->
     <dimen name="item_card_content_margin">8dp</dimen>
     <dimen name="item_card_cv_elevation">5dp</dimen>
-    <dimen name="item_card_label_height">15dp</dimen>
+    <dimen name="item_card_label_height">10dp</dimen>
     <dimen name="item_card_name_text_padding">10dp</dimen>
     <dimen name="item_card_name_text_size">16sp</dimen>
     <dimen name="item_card_members_text_padding">10dp</dimen>
@@ -110,7 +110,7 @@
 
     <!--members-->
     <dimen name="members_content_padding">16dp</dimen>
-    <dimen name="members_cv_marginTop">5dp</dimen>
+    <dimen name="members_cv_marginTop">21dp</dimen>
 
     <!--item member-->
     <dimen name="item_member_marginBottom">10dp</dimen>
@@ -125,8 +125,8 @@
 
     <!--add member-->
     <dimen name="dialog_member_cv_elevation">3dp</dimen>
-    <dimen name="dialog_member_cv_cornerRadius">3dp</dimen>
-    <dimen name="dialog_member_content_padding">10dp</dimen>
+    <dimen name="dialog_member_cv_cornerRadius">30dp</dimen>
+    <dimen name="dialog_member_content_padding">16dp</dimen>
     <dimen name="dialog_member_title_padding">5dp</dimen>
     <dimen name="dialog_member_title_text_size">18sp</dimen>
     <dimen name="member_dialog_divider_height">1dp</dimen>
@@ -143,7 +143,7 @@
     <dimen name="card_details_label_text_size">14sp</dimen>
     <dimen name="card_details_value_marginTop">5dp</dimen>
     <dimen name="card_details_value_padding">10dp</dimen>
-    <dimen name="card_details_members_label_marginTop">15dp</dimen>
+    <dimen name="card_details_members_label_marginTop">25dp</dimen>
     <dimen name="card_details_update_btn_marginTop">30dp</dimen>
 
     <!--item label color-->
@@ -152,11 +152,12 @@
     <dimen name="item_label_color_margin">5dp</dimen>
     <dimen name="item_label_color_selected_image_marginEnd">10dp</dimen>
     <dimen name="dialog_list_cv_elevation_and_corner_radius">3dp</dimen>
-    <dimen name="dialog_list_content_padding">10dp</dimen>
+    <dimen name="dialog_list_content_padding">16dp</dimen>
     <dimen name="dialog_list_title_padding">5dp</dimen>
     <dimen name="dialog_list_title_text_size">18sp</dimen>
     <dimen name="dialog_list_divider_height">1dp</dimen>
     <dimen name="dialog_list_marginTopBottom">3dp</dimen>
+    <dimen name="item_selected_member_image_small_size">20dp</dimen>
     <dimen name="item_selected_member_image_size">45dp</dimen>
     <dimen name="toolbar_elevation">0dp</dimen>
     <dimen name="text_input_corner_radius">12dp</dimen>

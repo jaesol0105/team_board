@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/transparent"
         android:orientation="horizontal"
         android:padding="@dimen/progress_dialog_content_padding">
 
@@ -25,6 +26,7 @@
 
         <TextView
             android:id="@+id/tv_progress_text"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/progress_text_marginStart"
