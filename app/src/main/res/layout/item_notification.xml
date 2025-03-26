@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="notification"
+            type="com.beinny.teamboard.data.local.NotificationEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:orientation="vertical"
+        android:background="@color/default_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <View
+                android:id="@+id/view_read"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginEnd="11dp"
+                android:background="@drawable/bg_circle_white"
+                android:visibility="invisible"
+                app:invisibleOff="@{notification.isRead}"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{notification.title}"
+                android:textSize="16sp"
+                android:textColor="@color/board_text_color"
+                tools:text="ARFurniture 초대 알림"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/board_text_secondary_color"
+            android:text="@{notification.message}"
+            android:textSize="14sp"
+            android:layout_marginStart="16dp"
+            tools:text="beinny님이 당신을 [ARFurniture]에 초대했습니다."
+            android:paddingTop="4dp" />
+
+        <TextView
+            android:id="@+id/tv_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:notificationDate="@{notification.timestamp}"
+            android:textSize="12sp"
+            tools:text="2025-01-05"
+            android:layout_marginStart="16dp"
+            android:textColor="@android:color/darker_gray"
+            android:paddingTop="4dp" />
+    </LinearLayout>
+</layout>

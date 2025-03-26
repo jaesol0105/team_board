@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_members"
+        android:icon="@drawable/ic_add_member_26"
         android:orderInCategory="100"
-        android:title="@string/members"
-        app:showAsAction="never"
-        />
+        android:title="@string/members_menu_id"
+        app:showAsAction="ifRoom" />
 </menu>

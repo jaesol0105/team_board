@@ -12,6 +12,7 @@ data class User(
     /** fcmToken은 어플리케이션에서 사용자에게 푸시 알림을 줄 때 필요하다.
      * fcmToken은 디바이스마다 다르게 부여 되는데, 서버는 이 토큰으로 디바이스를 구분한다. */
     val fcmToken: String = "",
+    val bookmarkedBoards: ArrayList<String> = ArrayList(),
     var selected : Boolean = false
 ) : Parcelable {
     constructor(source: Parcel) : this(
@@ -20,7 +21,8 @@ data class User(
         source.readString()!!,
         source.readString()!!,
         source.readLong(),
-        source.readString()!!
+        source.readString()!!,
+        source.createStringArrayList()!!,
     )
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
@@ -30,6 +32,7 @@ data class User(
         writeString(image)
         writeLong(mobile)
         writeString(fcmToken)
+        writeStringList(bookmarkedBoards)
     }
 
     override fun describeContents() = 0

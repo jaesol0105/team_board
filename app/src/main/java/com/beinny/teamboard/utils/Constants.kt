@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import android.webkit.MimeTypeMap
-import com.beinny.teamboard.ui.MyProfileActivity
 
 object Constants {
     // Firebase collection name for USERS
@@ -19,6 +18,7 @@ object Constants {
     const val NAME: String = "name"
     const val MOBILE: String = "mobile"
     const val ASSIGNED_TO : String = "assignedTo"
+    const val BOOKMARKED_BOARDS : String = "bookmarkedBoards"
 
     const val READ_STORAGE_PERMISSION_CODE = 1 // 읽기 권한 요청
     const val PICK_IMAGE_REQUEST_CODE = 2 // 이미지 선택 결과
@@ -52,6 +52,10 @@ object Constants {
     const val FCM_KEY_MESSAGE:String = "message"
     const val FCM_KEY_DATA:String = "data"
     const val FCM_KEY_TO:String = "to"
+
+    const val ARG_DATE = "date"
+    const val DIALOG_DATE = "DialogDate"
+    const val DATE_FORMAT = "yyyy년 M월 d일 (E) a hh:mm"
 
     /** [프로필 이미지 선택 : 갤러리 인텐트] */
     fun showImageChooser(activity: Activity) {

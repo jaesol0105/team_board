@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.beinny.teamboard.ui.home.boardList.BoardListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/default_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/main_screen_content_padding"
+        android:paddingRight="@dimen/main_screen_content_padding"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".ui.home.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/default_background"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_boards_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/default_background"
+                android:visibility="gone"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:visibility="visible"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <TextView
+                android:id="@+id/tv_no_boards_available"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/board_no_boards_are_available"
+                android:textColor="@color/secondary_text_color"
+                android:textSize="@dimen/no_boards_available_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

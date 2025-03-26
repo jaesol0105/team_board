@@ -2,21 +2,27 @@
     <string name="app_name">teamBoard</string>
     <string name="team_board">TEAMBOARD</string>
 
+    <string name="delete">삭제</string>
+    <string name="all_save">저장</string>
+    <string name="cancel">취소</string>
+    <string name="all_complete">완료</string>
+    <string name="done">완료</string>
+
     <!--intro-->
-    <string name="image_contentDescription">image</string>
-    <string name="let_s_get_started_text">모든 프로젝트를 한곳에서</string>
-    <string name="intro_text_description">효율적인 일정 관리, 팀보드에서 시작하세요.</string>
+    <string name="intro_image_content_description">image</string>
+    <string name="intro_started_text">모든 프로젝트를 한곳에서</string>
+    <string name="intro_started_text_description">효율적인 일정 관리, 팀보드에서 시작하세요.</string>
     <string name="sign_in">로그인</string>
     <string name="sign_up">가입하기</string>
 
     <!--sign up-->
     <string name="sign_up_description_text">이메일과 비밀번호를 입력하세요</string>
-    <string name="name">사용자 이름</string>
-    <string name="password">비밀번호</string>
-    <string name="email">이메일</string>
     <string name="please_input_name">사용자 이름을 입력해주세요</string>
     <string name="please_input_email">이메일을 입력해주세요</string>
     <string name="please_input_password">비밀번호를 입력해주세요</string>
+    <string name="name">사용자 이름</string>
+    <string name="password">비밀번호</string>
+    <string name="email">이메일</string>
 
     <!--sign in-->
     <string name="sign_in_description_text">사용자 이름과 이메일, 비밀번호를 입력하세요</string>
@@ -25,48 +31,47 @@
     <string name="please_click_back_again_to_exit">한번 더 누르면 화면이 닫힙니다.</string>
     <string name="please_wait">잠시만 기다려주세요&#8230;</string>
 
-    <!--nav-->
+    <!--nav menu-->
     <string name="nav_my_profile">프로필 편집</string>
     <string name="nav_sign_out">로그아웃</string>
 
     <!--my profile-->
     <string name="mobile">휴대폰 번호</string>
-    <string name="update">완료</string>
-    <string name="my_profile_title">프로필 편집</string>
 
     <!--create board-->
     <string name="create_board_title">새 보드 만들기</string>
+    <string name="create_board_name">보드 명</string>
     <string name="create">생성</string>
-    <string name="board_name">보드 명</string>
 
-    <!--item board-->
-    <string name="no_boards_are_available">보드가 없습니다</string>
-    <string name="boards_list">보드 목록</string>
+    <!--board list-->
+    <string name="board_no_boards_are_available">보드가 없습니다</string>
+    <string name="board_subtitle">보드 목록</string>
 
-    <!--item task-->
-    <string name="action_add_list">작업 목록 추가</string>
-    <string name="hint_list_name">제목 없음</string>
-    <string name="action_add_card">새 작업</string>
-    <string name="hint_card_name">Card Name</string>
-    <string name="add_list">Add List</string>
-    <string name="warning_message_delete_task">이 리스트를 삭제할까요? 되돌릴 수 없습니다</string>
-    <string name="delete">삭제</string>
-    <string name="cancle">취소</string>
+    <!--task list-->
+    <string name="task_action_add_list">작업 목록 추가</string>
+    <string name="task_hint_list_name">제목 없음</string>
+    <string name="task_action_add_card">새 작업</string>
+    <string name="task_hint_card_name">Card Name</string>
+    <string name="task_warning_message_delete_task">이 리스트를 삭제할까요?\n되돌릴 수 없습니다</string>
+    <string name="task_add_list">Add List</string>
 
     <!--members-->
-    <string name="members">Members</string>
+    <string name="members_menu_id">멤버</string>
 
     <!--add member-->
-    <string name="add_member">Add Member</string>
-    <string name="cancel">CANCEL</string>
-    <string name="add">ADD</string>
-    <string name="search_member">Search Member</string>
+    <string name="add_member_menu_id">Add Member</string>
+    <string name="add_member_action_invite">초대</string>
+    <string name="search_member">멤버 추가</string>
+    <string name="search_email">이메일 검색</string>
 
     <!--card details-->
-    <string name="label_color">Label Color</string>
+    <string name="card_name">작업 명</string>
+    <string name="card_details_hint">작업명은 최대 30글자까지 가능합니다</string>
+    <string name="label_color">라벨 색상</string>
     <string name="select_color">Select Color</string>
-    <string name="select_members">Select Members</string>
-    <string name="due_date">Due Date</string>
+    <string name="card_member">멤버</string>
+    <string name="select_members">Select Member</string>
+    <string name="due_date">마감일</string>
     <string name="select_due_date">Select Due Date</string>
     <string name="delete_card">Delete Card</string>
     <string name="alert">알림</string>
@@ -74,10 +79,20 @@
     <string name="yes">예</string>
     <string name="no">아니오</string>
 
-    <!--item label color-->
-    <string name="str_select_label_color">Select Label Color</string>
+    <!--date time picker-->
+    <string name="datetimepicker_date_label">날짜</string>
+    <string name="datetimepicker_time_label">시간</string>
 
-    <string name="str_select_member">Select Member</string>
+    <!--item label color-->
+    <string name="str_select_label_color">라벨 색상 선택</string>
+    <string name="str_select_member">멤버 추가</string>
+
+    <!--bookmark-->
+    <string name="bookmarked_board">북마크한 보드</string>
+    <string name="bookmarked_board_no_boards_are_available">북마크한 보드가 없습니다</string>
+
+    <!--notification-->
+    <string name="no_notification">받은 알림이 없습니다.</string>
 
     <string name="default_notification_channel_id">teamboard_notification_channel_id</string>
     <string name="title_activity_main">MainActivity</string>

@@ -10,15 +10,18 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.beinny.teamboard.R
+import com.beinny.teamboard.ServiceLocator
+import com.beinny.teamboard.data.local.NotificationEntity
 import com.beinny.teamboard.firebase.FirestoreClass
-import com.beinny.teamboard.ui.MainActivity
-import com.beinny.teamboard.ui.SignInActivity
+import com.beinny.teamboard.ui.home.MainActivity
+import com.beinny.teamboard.ui.login.SignInActivity
 import com.beinny.teamboard.utils.Constants
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-/** firebase Messaging Service
- * https://github.com/firebase/quickstart-android/tree/master/messaging */
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     /** [앱이 FCM을 통해 메시지를 수신할 때 호출된다]
@@ -33,11 +36,23 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         remoteMessage.data.isNotEmpty().let {
             Log.i(TAG, "Message data payload: " + remoteMessage.data)
 
-            val title = remoteMessage.data[Constants.FCM_KEY_TITLE]!!
-            val message = remoteMessage.data["body"]!!
+            val title = remoteMessage.data[Constants.FCM_KEY_TITLE]?: "알림"
+            val message = remoteMessage.data["body"] ?: "내용 없음"
 
-            // 기기에 알림을 띄운다
+            val notification = NotificationEntity(
+                title = title,
+                message = message,
+                timestamp = System.currentTimeMillis(),
+                isRead = false
+            )
+
+            //기기에 알림을 띄운다
             sendNotification(title, message)
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val repository = ServiceLocator.provideNotificationRepository(applicationContext)
+                repository.insertNotification(notification)
+            }
         }
 
         remoteMessage.notification?.let {

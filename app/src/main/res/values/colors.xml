@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
     <color name="gray">#7f7f7f</color>
     <color name="white_dark">#f8f9f9</color>
-    <color name="blue_gray_light">#a2aab4</color>
-    <color name="blue_gray_dark">#2b3036</color>
+    <color name="blue_gray_light">#a2aab4</color> <!--입력칸 힌트-->
+    <color name="blue_gray_dark">#2b3036</color> <!--입력칸 테두리, 카드 배경 색상-->
+
     <color name="default_background">#191919</color>
-    <color name="united_nations_blue">#2BA6F7</color>
     <color name="transparent_black">#40000000</color>
     <color name="transparent_white">#40FFFFFF</color>
-    <color name="blue">#0095f6</color>
-    <color name="deep_blue">#0064e0</color>
-
 
     <color name="colorPrimary">#191919</color>
     <color name="colorPrimaryDark">#191919</color>
@@ -31,6 +26,7 @@
     <color name="snackbar_error_color">#F72400</color>
 
     <color name="divider_color">#EAEAEA</color>
+    <color name="divider_color_light_gray">#d9d8dc</color>
 
     <color name="task_list_action_color">#F7F6FA</color>
     <color name="task_list_title_view_bg_color">#F8F8F8</color>
@@ -38,4 +34,17 @@
     <color name="board_text_color">#e1e1e1</color>
     <color name="board_text_secondary_color">#7f7f7f</color>
     <color name="board_divider_color">#2f2f2f</color>
+
+    <color name="united_nations_blue">#2BA6F7</color>
+    <color name="blue">#0095f6</color>
+    <color name="deep_blue">#0064e0</color>
+    <color name="btn_blue">#0A80F5</color>
+    <color name="fab_blue">#0accee</color>
+    <color name="blue_700">#FF1976D2</color>
+
+    <color name="fromm_1">#17181b</color>
+    <color name="fromm_2">#121315</color>
+    <color name="fromm_3">#d5d6da</color>
+    <color name="fromm_4">#7c7e88</color>
+    <color name="fromm_5">#26282e</color>
 </resources>
