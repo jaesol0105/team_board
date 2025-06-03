@@ -2,12 +2,16 @@ package com.beinny.teamboard
 
 import android.content.Context
 import androidx.room.Room
-import com.beinny.teamboard.data.local.NotificationDatabase
+import com.beinny.teamboard.data.repository.BoardRepository
+import com.beinny.teamboard.data.source.local.NotificationDatabase
 import com.beinny.teamboard.data.repository.NotificationRepository
+import com.beinny.teamboard.data.source.local.SharedPrefsHelper
+import com.beinny.teamboard.data.source.remote.BoardRemoteDataSource
 
 object ServiceLocator {
     private var database : NotificationDatabase? = null
-    private var recordRepository : NotificationRepository? = null
+    private var notificationRepository : NotificationRepository? = null
+    private var boardRepository: BoardRepository? = null
 
     private fun provideDatabase(applicationContext: Context) : NotificationDatabase {
         return database ?: kotlin.run {
@@ -22,11 +26,18 @@ object ServiceLocator {
     }
 
     fun provideNotificationRepository(context: Context) : NotificationRepository {
-        return recordRepository ?: kotlin.run {
+        return notificationRepository ?: kotlin.run {
             val dao = provideDatabase(context.applicationContext).notificationDao()
             NotificationRepository(dao).also {
-                recordRepository = it
+                notificationRepository = it
             }
         }
+    }
+
+    fun provideBoardRepository(context: Context): BoardRepository {
+        if (boardRepository == null) {
+            boardRepository = BoardRepository(BoardRemoteDataSource(), SharedPrefsHelper(context))
+        }
+        return boardRepository!!
     }
 }

@@ -8,7 +8,7 @@
 
         <variable
             name="board"
-            type="com.beinny.teamboard.models.Board" />
+            type="com.beinny.teamboard.data.model.Board" />
 
     </data>
 

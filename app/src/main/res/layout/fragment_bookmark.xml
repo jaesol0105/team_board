@@ -16,7 +16,7 @@
         android:paddingLeft="@dimen/main_screen_content_padding"
         android:paddingRight="@dimen/main_screen_content_padding"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".ui.home.MainActivity">
+        tools:context=".ui.main.MainActivity">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -23,7 +23,7 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     }
 
-    /** [progress bar dialog 출력] */
+    /** progress bar dialog 출력 */
     fun showProgressDialog(text: String) {
         mProgressDialog = Dialog(this,R.style.transparentDialog)
 
@@ -35,17 +35,26 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog.show()
     }
 
-    /** [progress bar dialog 숨기기] */
+    /** progress bar dialog 숨기기 */
     fun hideProgressDialog() {
-        mProgressDialog.dismiss()
+        if (::mProgressDialog.isInitialized && mProgressDialog.isShowing) {
+            mProgressDialog.dismiss()
+        }
     }
 
-    /** [현재 user uid 반환] */
-    fun getCurrentUserID(): String {
-        return FirebaseAuth.getInstance().currentUser!!.uid
+    /** 액션바 설정 */
+    fun setupActionBar(toolbar: androidx.appcompat.widget.Toolbar, title: String? = null) {
+        setSupportActionBar(toolbar)
+
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_back_arrow_30)
+            title?.let { setTitle(title) }
+        }
+        toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
-    /** [백버튼 두 번 종료] */
+    /** 백버튼 두 번 누르면 종료 */
     fun doubleBackToExit() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
@@ -58,20 +67,15 @@ open class BaseActivity : AppCompatActivity() {
         Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
-    /** [스낵바(하단) 경고 메세지 출력] */
+    /** 스낵바(하단) 경고 메세지 출력 */
     fun showErrorSnackBar(message: String) {
         val snackBar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
         val snackBarView = snackBar.view
-        snackBarView.setBackgroundColor(
-            ContextCompat.getColor(
-                this@BaseActivity,
-                R.color.snackbar_error_color
-            )
-        )
+        snackBarView.setBackgroundColor(ContextCompat.getColor(this@BaseActivity, R.color.snackbar_error_color))
         snackBar.show()
     }
 
-    /** [애니메이션 (우측)] */
+    /** 애니메이션 (우측) */
     fun createTransitionAnimation() {
         applyAnimationOpen(R.anim.left_transition, R.anim.none)
     }

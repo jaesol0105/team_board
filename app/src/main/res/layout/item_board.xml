@@ -6,7 +6,7 @@
     <data>
         <variable
             name="board"
-            type="com.beinny.teamboard.models.Board" />
+            type="com.beinny.teamboard.data.model.Board" />
     </data>
 
     <LinearLayout
@@ -85,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_bookmark_24"
-                app:visibilityOff="@{board.bookmarked}"
+                app:hideIf="@{board.bookmarked}"
                 app:tint="@color/board_text_color" />
 
             <ImageView

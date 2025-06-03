@@ -10,12 +10,11 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/default_background</item>
-        <item name="android:navigationBarColor" >@color/default_background</item>
+        <item name="android:statusBarColor">@color/default_background</item>
+        <item name="android:navigationBarColor">@color/default_background</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!-- 상단바 제목 -->
@@ -37,11 +36,11 @@
         <item name="errorIconDrawable">@null</item>
         <item name="colorAccent">@color/teal_200</item>
         <item name="boxStrokeColor">@android:color/transparent</item> <!--Focus 상태일때 밑줄 색-->
-        <item name="colorControlNormal">@android:color/transparent</item>  <!--unFocus 상태일때 밑줄 색-->
-        <item name="android:textColorHint">@color/blue_gray_light</item>  <!--hint 색-->
-        <item name="hintTextColor">@color/blue_gray_light</item>   <!--floating hint 색-->
+        <item name="colorControlNormal">@android:color/transparent</item> <!--unFocus 상태일때 밑줄 색-->
+        <item name="android:textColorHint">@color/blue_gray_light</item> <!--hint 색-->
+        <item name="hintTextColor">@color/blue_gray_light</item> <!--floating hint 색-->
         <item name="hintAnimationEnabled">false</item>
-        <item name="android:textCursorDrawable">@color/colorAccent</item>  <!--cursor 색-->
+        <item name="android:textCursorDrawable">@color/colorAccent</item> <!--cursor 색-->
         <item name="helperTextTextColor">@color/blue_gray_light</item>
         <item name="android:theme">@style/ThemeOverlay.Eggeum.TextInputLayout.CursorColor</item>
     </style>
@@ -55,7 +54,7 @@
         <item name="colorAccent">@color/teal_200</item>
     </style>
 
-    <!-- Drawer 네비게이션 폰트-->
+    <!-- Drawer 네비게이션 폰트 -->
     <style name="CustomNavigationDrawerText" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/white</item> <!-- 텍스트 색상 -->
         <item name="android:textSize">16sp</item> <!-- 텍스트 크기 -->
@@ -76,6 +75,12 @@
     </style>
 
     <!-- DateTimePicker -->
+    <style name="dateTimePicker">
+        <item name="android:textColorPrimary">@color/fromm_3</item>
+        <item name="android:colorControlNormal">@color/fromm_3</item>
+    </style>
+
+    <!-- 폰트 -->
     <style name="TextSubtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:textColor">@color/fromm_3</item>
     </style>
@@ -86,11 +91,6 @@
 
     <style name="Headline6.Bold" parent="Headline6">
         <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="dateTimePicker">
-        <item name="android:textColorPrimary">@color/fromm_3</item>
-        <item name="android:colorControlNormal">@color/fromm_3</item>
     </style>
 
     <style name="TextMedium.Bold" parent="TextAppearance.AppCompat.Medium">

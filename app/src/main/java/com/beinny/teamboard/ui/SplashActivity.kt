@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.beinny.teamboard.databinding.ActivitySplashBinding
-import com.beinny.teamboard.firebase.FirestoreClass
-import com.beinny.teamboard.ui.home.MainActivity
+import com.beinny.teamboard.data.source.remote.firebase.FirestoreClass
+import com.beinny.teamboard.ui.common.hideStatusBar
+import com.beinny.teamboard.ui.common.launch
+import com.beinny.teamboard.ui.common.setCustomFont
+import com.beinny.teamboard.ui.main.MainActivity
 import com.beinny.teamboard.ui.login.IntroActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,28 +27,25 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 전체 화면
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
+        hideStatusBar()
 
         // 폰트 설정
-        val typeface: Typeface = Typeface.createFromAsset(assets, "carbon bl.ttf")
-        binding.tvSplashAppName.typeface = typeface
+        binding.tvSplashAppName.setCustomFont("carbon bl.ttf")
 
-        /** 로그인 된 사용자는 main, 로그인 안된 사용자는 intro */
+        // 로그인 된 사용자는 main, 로그인 안된 사용자는 intro
         CoroutineScope(Dispatchers.Main).launch{
             delay(1000L)
 
-            val currentUserID = FirestoreClass().getCurrentUserID() // 현재 로그인 된 사용자 id
+            // 현재 로그인 된 사용자 id
+            val currentUserID = FirestoreClass().getCurrentUserID()
 
             if (currentUserID.isNotEmpty()) {
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                launch<MainActivity>()
             } else {
-                startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
+                launch<IntroActivity>()
             }
 
-            finish() // 백버튼으로 돌아갈 수 없다
+            finish() // 백버튼으로 돌아갈 수 없도록
         }
     }
 }
