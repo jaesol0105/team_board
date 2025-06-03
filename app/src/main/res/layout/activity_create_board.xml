@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="imageUri"
+            type="String" />
     </data>
 
     <LinearLayout
@@ -12,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="@color/fromm_2"
         android:orientation="vertical"
-        tools:context=".ui.home.createboard.CreateBoardActivity">
+        tools:context=".ui.createboard.CreateBoardActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -77,6 +79,7 @@
                             android:layout_width="@dimen/my_profile_user_image_size"
                             android:layout_height="@dimen/my_profile_user_image_size"
                             android:contentDescription="@string/intro_image_content_description"
+                            app:imageUri="@{imageUri}"
                             android:src="@drawable/ic_board_place_holder" />
 
                         <de.hdodenhof.circleimageview.CircleImageView

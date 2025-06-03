@@ -7,57 +7,59 @@ import android.provider.MediaStore
 import android.webkit.MimeTypeMap
 
 object Constants {
-    // Firebase collection name for USERS
+    // Firebase collection name
     const val USERS: String = "users"
-
-    // Firebase collection name for BOARDS
     const val BOARDS: String = "boards"
 
-    // Firebase database field 명
+    // Firebase database field name
     const val IMAGE: String = "image"
     const val NAME: String = "name"
     const val MOBILE: String = "mobile"
     const val ASSIGNED_TO : String = "assignedTo"
-    const val BOOKMARKED_BOARDS : String = "bookmarkedBoards"
-
-    const val READ_STORAGE_PERMISSION_CODE = 1 // 읽기 권한 요청
-    const val PICK_IMAGE_REQUEST_CODE = 2 // 이미지 선택 결과
-
-    const val DOCUMENT_ID : String = "documentId"
-
     const val TASK_LIST : String = "taskList"
+    const val BOOKMARKED_BOARDS : String = "bookmarkedBoards"
+    const val FCM_TOKEN:String = "fcmToken"
 
-    const val BOARD_DETAIL: String = "board_detail"
+    // Intent key
+    const val EXTRA_DOCUMENT_ID : String = "extra_document_id"
+    const val EXTRA_BOARD_DETAIL: String = "extra_board_detail"
+    const val EXTRA_BOARD_MEMBERS : String = "extra_board_members"
+    const val EXTRA_TASK_ITEM_POSITION: String = "extra_task_item_position"
+    const val EXTRA_CARD_ITEM_POSITION: String = "extra_card_item_position"
 
+    // SharedPreference
+    const val TEAMBOARD_PREFERENCES = "Teamboard_preference"
+    const val FCM_TOKEN_UPDATED:String = "fcmTokenUpdated"
+
+    // FCM
+    const val FCM_HTTP_V1_API_URL: String = "https://fcm.googleapis.com/v1/projects/teamboard-1451c/messages:send"
+    const val FCM_KEY_TITLE:String = "title"
+
+    // Dialog
+    const val DIALOG_LABEL_COLOR = "DialogLabelColor"
+    const val DIALOG_MEMBER_LIST = "DialogMemberList"
+    const val DIALOG_DATE_TIME = "DialogDateTimePicker"
+    const val ARG_DATE = "date"
+    const val DATE_FORMAT = "yyyy년 M월 d일 (E) a hh:mm"
+
+    // Result Code
+    const val PICK_IMAGE_REQUEST_CODE = 1
+
+    // String
     const val ID : String = "id"
     const val EMAIL: String = "email"
-
-    const val BOARD_MEMBERS_LIST : String = "board_members_list"
-
     const val SELECT: String = "Select"
     const val UN_SELECT: String = "UnSelect"
 
-    const val TEAMBOARD_PREFERENCES = "Teamboard_preference"
+    /** 이미지 선택 : 갤러리 인텐트 */
+    fun createGalleryIntent(): Intent {
+        return Intent(
+            Intent.ACTION_PICK,
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        )
+    }
 
-    const val FCM_TOKEN:String = "fcmToken"
-    const val FCM_TOKEN_UPDATED:String = "fcmTokenUpdated"
-
-    const val TASK_LIST_ITEM_POSITION: String = "task_list_item_position"
-    const val CARD_LIST_ITEM_POSITION: String = "card_list_item_position"
-
-    const val FCM_BASE_URL:String = "https://fcm.googleapis.com/fcm/send"
-    const val FCM_HTTP_V1_API_URL: String = "https://fcm.googleapis.com/v1/projects/teamboard-1451c/messages:send"
-    const val FCM_KEY:String = "key"
-    const val FCM_KEY_TITLE:String = "title"
-    const val FCM_KEY_MESSAGE:String = "message"
-    const val FCM_KEY_DATA:String = "data"
-    const val FCM_KEY_TO:String = "to"
-
-    const val ARG_DATE = "date"
-    const val DIALOG_DATE = "DialogDate"
-    const val DATE_FORMAT = "yyyy년 M월 d일 (E) a hh:mm"
-
-    /** [프로필 이미지 선택 : 갤러리 인텐트] */
+    /** 이미지 선택 : 갤러리 인텐트 (구) */
     fun showImageChooser(activity: Activity) {
         val galleryIntent = Intent(
             Intent.ACTION_PICK,
@@ -66,13 +68,14 @@ object Constants {
         activity.startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST_CODE)
     }
 
-    /** [선택된 이미지 확장자 얻기] */
-    fun getFileExtension(activity: Activity,uri: Uri?): String? {
-        // MimeTypeMap: MIME type과 파일 확장자를 매핑하는 양방향 맵
-        // getSingleton(): MimeTypeMap의 싱글톤 객체를 가져온다.
-        // getExtensionFromMimeType: 주어진 MIME type의 파일 확장자를 얻는다.
-        // contentResolver.getType: 주어진 content URL의 MIME type을 얻는다.
+    /** 선택된 이미지 확장자 얻기 */
+    fun getFileExtension(activity: Activity, uri: Uri?): String {
+        /** MimeTypeMap: MIME type과 파일 확장자를 매핑하는 양방향 맵
+         * getExtensionFromMimeType: 주어진 MIME type의 파일 확장자를 얻는다.
+         * contentResolver.getType: 주어진 content URL의 MIME type을 얻는다. */
 
-        return MimeTypeMap.getSingleton().getExtensionFromMimeType(activity.contentResolver.getType(uri!!))
+        return uri?.let {
+            MimeTypeMap.getSingleton().getExtensionFromMimeType(activity.contentResolver.getType(it))
+        } ?: ""
     }
 }

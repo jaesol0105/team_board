@@ -5,6 +5,13 @@
 
     <data>
 
+        <variable
+            name="imageUri"
+            type="String" />
+
+        <variable
+            name="viewModel"
+            type="com.beinny.teamboard.ui.myprofile.MyProfileViewModel" />
     </data>
 
     <LinearLayout
@@ -20,7 +27,7 @@
             app:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_my_profile_activity"
+                android:id="@+id/toolbar_my_profile"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
@@ -55,7 +62,9 @@
                         android:layout_width="@dimen/my_profile_user_image_size"
                         android:layout_height="@dimen/my_profile_user_image_size"
                         android:contentDescription="@string/intro_image_content_description"
-                        android:src="@drawable/ic_user_place_holder" />
+                        android:src="@drawable/ic_user_place_holder"
+                        app:imageUri="@{imageUri}"
+                        fallbackUrl="@{viewModel.user.image}" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/overlayView"
@@ -67,8 +76,8 @@
                         android:id="@+id/cameraIcon"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_camera_30"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_camera_30" />
                 </FrameLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -87,7 +96,8 @@
                         android:background="@drawable/bg_input_border_round"
                         android:hint="@string/name"
                         android:textColor="@color/white_dark"
-                        android:textSize="@dimen/et_text_size" />
+                        android:textSize="@dimen/et_text_size"
+                        app:textValue="@{viewModel.user.name}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,7 +121,8 @@
                         android:inputType="textEmailAddress"
                         android:textColor="@color/white_dark"
                         android:textColorHint="@color/blue_gray_light"
-                        android:textSize="@dimen/et_text_size" />
+                        android:textSize="@dimen/et_text_size"
+                        app:textValue="@{viewModel.user.email}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,7 +142,8 @@
                         android:hint="@string/mobile"
                         android:inputType="phone"
                         android:textColor="@color/white_dark"
-                        android:textSize="@dimen/et_text_size" />
+                        android:textSize="@dimen/et_text_size"
+                        app:textValue="@{viewModel.user.mobile}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

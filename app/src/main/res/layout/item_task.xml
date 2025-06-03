@@ -7,7 +7,7 @@
 
         <variable
             name="task"
-            type="com.beinny.teamboard.models.Task" />
+            type="com.beinny.teamboard.data.model.Task" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_add_task_list_btn"
+                android:id="@+id/btn_add_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/task_list_action_color"
@@ -37,7 +37,7 @@
                 tools:visibility="visible" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_add_task_list_name_view"
+                android:id="@+id/cv_add_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -54,7 +54,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/ib_close_task_list_name"
+                        android:id="@+id/btn_cancel_add_task"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="?attr/selectableItemBackground"
@@ -63,7 +63,7 @@
                         android:src="@drawable/ic_mini_cancel" />
 
                     <EditText
-                        android:id="@+id/et_task_list_name"
+                        android:id="@+id/et_task_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -72,7 +72,7 @@
                         android:inputType="text" />
 
                     <ImageButton
-                        android:id="@+id/ib_done_task_list_name"
+                        android:id="@+id/btn_submit_add_task"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="?attr/selectableItemBackground"
@@ -83,7 +83,7 @@
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
-                android:id="@+id/ll_task_list_items"
+                android:id="@+id/layout_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/task_list_action_color"
@@ -93,7 +93,7 @@
                 tools:visibility="visible">
 
                 <LinearLayout
-                    android:id="@+id/ll_task_list_title_view"
+                    android:id="@+id/layout_task_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/task_list_title_view_bg_color"
@@ -105,7 +105,7 @@
                     tools:visibility="visible">
 
                     <TextView
-                        android:id="@+id/tv_task_list_title"
+                        android:id="@+id/tv_task_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -119,7 +119,7 @@
                         tools:text="Title" />
 
                     <ImageButton
-                        android:id="@+id/ib_edit_task_list_name"
+                        android:id="@+id/btn_edit_task_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="?attr/selectableItemBackground"
@@ -128,7 +128,7 @@
                         android:src="@drawable/ic_mini_edit" />
 
                     <ImageButton
-                        android:id="@+id/ib_delete_task_list"
+                        android:id="@+id/btn_delete_task"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="?attr/selectableItemBackground"
@@ -143,7 +143,7 @@
                     android:background="@color/divider_color" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_edit_task_list_name_view"
+                    android:id="@+id/cv_edit_task"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/task_item_cv_margin"
@@ -161,7 +161,7 @@
                         android:orientation="horizontal">
 
                         <ImageButton
-                            android:id="@+id/ib_close_task_list_name_editable"
+                            android:id="@+id/btn_cancel_edit_task"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="?attr/selectableItemBackground"
@@ -170,7 +170,7 @@
                             android:src="@drawable/ic_mini_cancel" />
 
                         <EditText
-                            android:id="@+id/et_task_list_name_editable"
+                            android:id="@+id/et_task_name_edit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -179,7 +179,7 @@
                             android:inputType="text" />
 
                         <ImageButton
-                            android:id="@+id/ib_done_task_list_name_editable"
+                            android:id="@+id/btn_submit_edit_task"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="?attr/selectableItemBackground"
@@ -196,7 +196,7 @@
                     android:layout_margin="@dimen/task_item_rv_card_list_margin" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_add_card_name_view"
+                    android:id="@+id/cv_add_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/task_item_cv_margin"
@@ -212,7 +212,7 @@
                         android:orientation="horizontal">
 
                         <ImageButton
-                            android:id="@+id/ib_close_card_name"
+                            android:id="@+id/btn_cancel_add_card"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="?attr/selectableItemBackground"
@@ -230,7 +230,7 @@
                             android:inputType="text" />
 
                         <ImageButton
-                            android:id="@+id/ib_done_card_name"
+                            android:id="@+id/btn_submit_add_card"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="?attr/selectableItemBackground"
@@ -241,7 +241,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/tv_add_card_btn"
+                    android:id="@+id/btn_add_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/task_list_action_color"

@@ -8,21 +8,21 @@
     <!-- 보드 목록 -->
     <fragment
         android:id="@+id/boardListFragment"
-        android:name="com.beinny.teamboard.ui.home.boardList.BoardListFragment"
+        android:name="com.beinny.teamboard.ui.boardlist.BoardListFragment"
         android:label="BoardList"
         tools:layout="@layout/fragment_board_list" />
 
     <!-- 북마크 -->
     <fragment
         android:id="@+id/bookMarkFragment"
-        android:name="com.beinny.teamboard.ui.home.bookmark.BookmarkFragment"
+        android:name="com.beinny.teamboard.ui.bookmark.BookmarkFragment"
         android:label="BookMark"
         tools:layout="@layout/fragment_bookmark" />
 
     <!-- 알림 -->
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="com.beinny.teamboard.ui.home.notification.NotificationFragment"
+        android:name="com.beinny.teamboard.ui.notification.NotificationFragment"
         android:label="Notification"
         tools:layout="@layout/fragment_notification" />
 

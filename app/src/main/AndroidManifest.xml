@@ -22,7 +22,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_stat_ic_notification" />
+            android:resource="@drawable/ic_stat_teamboard" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
@@ -59,7 +59,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.home.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -69,7 +69,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.home.createboard.CreateBoardActivity"
+            android:name=".ui.createboard.CreateBoardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -79,18 +79,18 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.tasklist.MembersActivity"
+            android:name=".ui.member.MembersActivity"
             android:label="@string/members_menu_id"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.carddetails.CardDetailsActivity"
+            android:name=".ui.carddetail.CardDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name=".fcm.MyFirebaseMessagingService"
+            android:name=".service.MyFirebaseMessagingService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

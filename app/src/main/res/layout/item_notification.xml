@@ -6,7 +6,7 @@
     <data>
         <variable
             name="notification"
-            type="com.beinny.teamboard.data.local.NotificationEntity" />
+            type="com.beinny.teamboard.data.model.NotificationEntity" />
     </data>
 
     <LinearLayout
@@ -29,7 +29,7 @@
                 android:layout_marginEnd="11dp"
                 android:background="@drawable/bg_circle_white"
                 android:visibility="invisible"
-                app:invisibleOff="@{notification.isRead}"
+                app:fadeIf="@{notification.isRead}"
                 android:layout_gravity="center"
                 />
             <TextView

@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/splash_background"
+        android:background="@color/default_background"
         android:gravity="center"
         tools:context=".ui.SplashActivity">
 
@@ -23,6 +23,5 @@
             style="@style/CustomToolbarTitleMain"
             android:textSize="@dimen/splash_screen_title_text_size"
             android:textStyle="bold" />
-
     </LinearLayout>
 </layout>

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-            name="viewModel"
-            type="com.beinny.teamboard.ui.carddetails.CardDetailsViewModel" />
+            name="cardName"
+            type="String" />
 
     </data>
 
@@ -15,7 +16,7 @@
         android:layout_height="match_parent"
         android:background="@color/fromm_2"
         android:orientation="vertical"
-        tools:context=".ui.carddetails.CardDetailsActivity">
+        tools:context=".ui.carddetail.CardDetailsActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -24,7 +25,7 @@
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_card_details_activity"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/fromm_2"
@@ -66,8 +67,10 @@
                     android:background="@drawable/bg_input_border_round"
                     android:hint="@string/card_name"
                     android:inputType="text"
+                    android:text="@{cardName}"
                     android:textColor="@color/white_dark"
-                    android:textSize="@dimen/et_text_size" />
+                    android:textSize="@dimen/et_text_size"
+                    app:setCursorToEnd="@{true}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -88,8 +91,8 @@
                 style="@style/CustomToolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="작업 설정"
                 android:layout_marginTop="30dp"
+                android:text="작업 설정"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -115,19 +118,19 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_color"
                         android:paddingTop="5dp"
+                        android:text="@string/label_color"
                         android:textColor="@color/board_text_color"
                         android:textSize="@dimen/card_details_label_text_size" />
 
                     <TextView
                         android:id="@+id/tv_select_label_color"
+                        style="@style/CustomBodyText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_details_value_marginTop"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:layout_marginTop="@dimen/card_details_value_marginTop"
-                        style="@style/CustomBodyText"
                         android:text="@string/select_color" />
 
                     <TextView
@@ -140,13 +143,13 @@
 
                     <TextView
                         android:id="@+id/tv_select_members"
+                        style="@style/CustomBodyText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_details_value_marginTop"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:layout_marginTop="@dimen/card_details_value_marginTop"
-                        android:text="@string/select_members"
-                        style="@style/CustomBodyText" />
+                        android:text="@string/select_members" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_selected_members_list"
@@ -169,11 +172,11 @@
                         android:id="@+id/tv_select_due_date"
                         style="@style/CustomBodyText"
                         android:layout_width="match_parent"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_details_value_marginTop"
-                        android:text="@string/select_due_date"/>
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="@string/select_due_date" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
