@@ -75,16 +75,11 @@
 ```
 
 ## Refactoring
-* BottomSheetCustomDialog
-* ViewbindinAdapter 를 통한 코드 간소화
+* MVVM 패턴 설계 / 관심사 분리
+* 콜백 중심의 비동기 처리 -> 코루틴 + Flow 비동기 처리 구조
 * 확장함수를 통한 반복 로직 모듈화
-* MVVM 패턴, 계층 분리와 관심사 분리
-
-* LiveData -> StateFlow
-  * (NPE 방지 및 생명주기 종속성 제거)
-    
-* 콜백 중심의 비동기 처리 -> 코루틴과 StateFlow-collect 구조
-  * (모듈간 결합도를 낮추고 코드의 가독성 향상)
+* ViewbindinAdapter를 통한 UI 코드 간소화
+* BottomSheetCustomDialog
 
 ## Demo
 
