@@ -4,7 +4,7 @@
 
 팀 프로젝트 관리 / 일정 공유 <br/>
 안드로이드 애플리케이션
-
+ 
 ## Development
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.9.23-blue.svg)](https://kotlinlang.org)
@@ -42,6 +42,27 @@
 * Compose
   * Material Design
 
+## Features
+* 주요 기능
+  * 여러개의 Board를 통해 프로젝트 별로 일정을 관리 할 수 있습니다.
+  * 큰 작업 단위인 Task, 개별 작업 단위인 Card를 통해 체계적인 일정관리를 할 수 있습니다.
+
+* 기능
+  * 이메일을 통한 멤버 초대
+  * Board 초대 앱 푸시 알림
+  * 북마크 추가 및 해제 기능
+  * 작업 단위 별 진행 현황 표시 라벨
+  * 작업 단위 별 멤버 역할 배정
+  * 작업 단위 별 마감일 설정
+  * 드래그를 통한 카드 item 순서 변경
+    
+## Refactoring
+* MVVM 패턴 설계 / 관심사 분리
+* 코루틴 + Flow 비동기 처리 구조
+* 확장함수를 통한 반복 로직 모듈화
+* ViewbindinAdapter를 통한 UI 코드 간소화
+* BottomSheetCustomDialog, Custom DateTimePicker
+
 ## Foldering
 ```
 ├── app
@@ -74,17 +95,9 @@
 └── gradle
 ```
 
-## Refactoring
-* MVVM 패턴 설계 / 관심사 분리
-* 콜백 중심의 비동기 처리 -> 코루틴 + Flow 비동기 처리 구조
-* 확장함수를 통한 반복 로직 모듈화
-* ViewbindinAdapter를 통한 UI 코드 간소화
-* BottomSheetCustomDialog
-
 ## Demo
-
 <img src="https://github.com/user-attachments/assets/19955ed5-cbf5-4d9d-a7b4-3c1f3705c5ef" width="25%"/>
-<img src="https://github.com/user-attachments/assets/8b8cd0d9-563e-40f6-adfc-597f98b092b7" width="25%"/>
+<img src="https://github.com/user-attachments/assets/b54935dc-3149-4d7c-ab2a-2862003337e1" width="25%"/>
 <img src="https://github.com/user-attachments/assets/d0fd407e-6fee-43dc-aeac-ee3677e71008" width="25%"/>
 <img src="https://github.com/user-attachments/assets/a692104e-2c99-40f6-9764-83e40a7e43f4" width="25%"/>
 <img src="https://github.com/user-attachments/assets/275f0e7d-8fd7-4d59-bfa2-f912722daea2" width="25%"/>
