@@ -96,10 +96,8 @@
 ```
 
 ## Demo
-<img src="https://github.com/user-attachments/assets/19955ed5-cbf5-4d9d-a7b4-3c1f3705c5ef" width="25%"/>
-<img src="https://github.com/user-attachments/assets/b54935dc-3149-4d7c-ab2a-2862003337e1" width="25%"/>
-<img src="https://github.com/user-attachments/assets/d0fd407e-6fee-43dc-aeac-ee3677e71008" width="25%"/>
-<img src="https://github.com/user-attachments/assets/a692104e-2c99-40f6-9764-83e40a7e43f4" width="25%"/>
-<img src="https://github.com/user-attachments/assets/275f0e7d-8fd7-4d59-bfa2-f912722daea2" width="25%"/>
-<img src="https://github.com/user-attachments/assets/b84a31ff-28c2-4eec-84b8-a6b36338592f" width="25%"/>
-
+<img src="https://github.com/user-attachments/assets/d995607c-5f67-4b38-abd6-189832c5c5b2" width="24%"/>
+<img src="https://github.com/user-attachments/assets/b54935dc-3149-4d7c-ab2a-2862003337e1" width="24%"/>
+<img src="https://github.com/user-attachments/assets/275f0e7d-8fd7-4d59-bfa2-f912722daea2" width="24%"/>
+<img src="https://github.com/user-attachments/assets/420af884-7e6e-43c5-a1d6-d150340204cc" width="24%"/>
+<img src="https://github.com/user-attachments/assets/b84a31ff-28c2-4eec-84b8-a6b36338592f" width="24%"/>
