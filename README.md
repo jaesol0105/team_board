@@ -100,4 +100,3 @@
 <img src="https://github.com/user-attachments/assets/b54935dc-3149-4d7c-ab2a-2862003337e1" width="24%"/>
 <img src="https://github.com/user-attachments/assets/275f0e7d-8fd7-4d59-bfa2-f912722daea2" width="24%"/>
 <img src="https://github.com/user-attachments/assets/420af884-7e6e-43c5-a1d6-d150340204cc" width="24%"/>
-<img src="https://github.com/user-attachments/assets/b84a31ff-28c2-4eec-84b8-a6b36338592f" width="24%"/>
