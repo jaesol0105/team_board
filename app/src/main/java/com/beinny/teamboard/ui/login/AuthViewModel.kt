@@ -1,5 +1,6 @@
 package com.beinny.teamboard.ui.login
 
+import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.beinny.teamboard.data.repository.BoardRepository
@@ -39,7 +40,19 @@ class AuthViewModel (
         }
     }
 
-    fun signOut() {
+    suspend fun signOut() {
         repository.signOut()
+    }
+
+    fun signInWithKakaoSso(activity: Activity) {
+        viewModelScope.launch {
+            _uiState.value = UiState.Loading
+            try {
+                val ok = repository.signInWithKakaoSso(activity)
+                _uiState.value = if (ok) UiState.Success else UiState.Error("카카오 로그인 실패")
+            } catch (e: Exception) {
+                _uiState.value = UiState.Error(e.message ?: "알 수 없는 오류 발생")
+            }
+        }
     }
 }

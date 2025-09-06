@@ -14,24 +14,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="@dimen/task_item_cv_elevation">
+        app:cardBackgroundColor="@color/task_bg"
+        app:cardCornerRadius="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/task_bg"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/btn_add_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/task_list_action_color"
+                android:background="@color/task_bg"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:padding="@dimen/task_item_add_item_text_padding"
                 android:text="@string/task_action_add_list"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/white_dark"
                 android:textSize="@dimen/task_item_add_item_text_size"
                 android:visibility="gone"
                 tools:visibility="visible" />
@@ -43,6 +44,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:visibility="gone"
+                app:cardBackgroundColor="@color/task_bg"
                 app:cardCornerRadius="@dimen/task_item_cv_corner_radius"
                 app:cardElevation="0dp"
                 tools:visibility="visible">
@@ -60,16 +62,21 @@
                         android:background="?attr/selectableItemBackground"
                         android:contentDescription="@string/intro_image_content_description"
                         android:padding="@dimen/task_item_image_buttons_padding"
-                        android:src="@drawable/ic_mini_cancel" />
+                        android:src="@drawable/ic_mini_cancel"
+                        app:tint="@color/blue_gray_light" />
 
                     <EditText
+                        style="@style/EditTextUnderlineStyle"
                         android:id="@+id/et_task_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:autofillHints="@string/task_hint_list_name"
                         android:hint="@string/task_hint_list_name"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textColor="@color/white_dark"
+                        android:textColorHint="@color/blue_gray_light"
+                        />
 
                     <ImageButton
                         android:id="@+id/btn_submit_add_task"
@@ -86,7 +93,7 @@
                 android:id="@+id/layout_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/task_list_action_color"
+                android:background="@color/task_bg"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:visibility="gone"
@@ -96,9 +103,10 @@
                     android:id="@+id/layout_task_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/task_list_title_view_bg_color"
-                    android:elevation="@dimen/task_item_title_view_elevation"
+                    android:background="@color/task_bg"
                     android:gravity="center"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
                     android:orientation="horizontal"
                     android:paddingTop="8dp"
                     android:visibility="visible"
@@ -109,12 +117,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="@dimen/task_item_title_text_padding"
+                        android:paddingLeft="4dp"
                         android:paddingTop="@dimen/task_item_title_text_padding"
+                        android:paddingEnd="@dimen/task_item_title_text_padding"
                         android:paddingBottom="@dimen/task_item_title_text_padding"
                         android:text="@{task.title}"
-                        android:textColor="@color/primary_text_color"
+                        android:textColor="@color/white_dark"
                         android:textSize="@dimen/task_item_title_text_size"
                         tools:text="Title" />
 
@@ -133,14 +141,16 @@
                         android:layout_height="wrap_content"
                         android:background="?attr/selectableItemBackground"
                         android:contentDescription="@string/intro_image_content_description"
-                        android:padding="@dimen/task_item_image_buttons_padding"
+                        android:paddingRight="4dp"
+                        android:paddingTop="@dimen/task_item_image_buttons_padding"
+                        android:paddingBottom="@dimen/task_item_image_buttons_padding"
                         android:src="@drawable/ic_mini_delete" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/task_item_divider_height"
-                    android:background="@color/divider_color" />
+                    android:background="@color/task_div" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_edit_task"
@@ -150,6 +160,7 @@
                     android:layout_marginTop="@dimen/task_item_cv_margin"
                     android:layout_marginEnd="@dimen/task_item_cv_margin"
                     android:visibility="gone"
+                    app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="@dimen/task_item_cv_corner_radius"
                     app:cardElevation="@dimen/task_item_cv_elevation"
                     tools:visibility="visible">
@@ -157,6 +168,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/card_bg"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -167,16 +179,20 @@
                             android:background="?attr/selectableItemBackground"
                             android:contentDescription="@string/intro_image_content_description"
                             android:padding="@dimen/task_item_image_buttons_padding"
-                            android:src="@drawable/ic_mini_cancel" />
+                            android:src="@drawable/ic_mini_cancel"
+                            app:tint="@color/blue_gray_light" />
 
                         <EditText
+                            style="@style/EditTextUnderlineStyle"
                             android:id="@+id/et_task_name_edit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:autofillHints="@string/task_hint_list_name"
                             android:hint="@string/task_hint_list_name"
-                            android:inputType="text" />
+                            android:inputType="text"
+                            android:textColor="@color/white_dark"
+                            android:textColorHint="@color/blue_gray_light" />
 
                         <ImageButton
                             android:id="@+id/btn_submit_edit_task"
@@ -193,14 +209,19 @@
                     android:id="@+id/rv_card_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/task_item_rv_card_list_margin" />
+                    android:layout_marginLeft="@dimen/task_item_rv_card_list_margin"
+                    android:layout_marginRight="@dimen/task_item_rv_card_list_margin"
+                    android:layout_marginBottom="@dimen/task_item_rv_card_list_margin" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_add_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/task_item_cv_margin"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="@dimen/task_item_cv_margin"
+                    android:layout_marginRight="@dimen/task_item_cv_margin"
                     android:visibility="gone"
+                    app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="@dimen/task_item_cv_corner_radius"
                     app:cardElevation="@dimen/task_item_cv_elevation"
                     tools:visibility="visible">
@@ -208,6 +229,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/card_bg"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -218,16 +240,20 @@
                             android:background="?attr/selectableItemBackground"
                             android:contentDescription="@string/intro_image_content_description"
                             android:padding="@dimen/task_item_image_buttons_padding"
-                            android:src="@drawable/ic_mini_cancel" />
+                            android:src="@drawable/ic_mini_cancel"
+                            app:tint="@color/blue_gray_light" />
 
                         <EditText
+                            style="@style/EditTextUnderlineStyle"
                             android:id="@+id/et_card_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:autofillHints="@string/task_hint_card_name"
                             android:hint="@string/task_hint_card_name"
-                            android:inputType="text" />
+                            android:inputType="text"
+                            android:textColor="@color/white_dark"
+                            android:textColorHint="@color/blue_gray_light" />
 
                         <ImageButton
                             android:id="@+id/btn_submit_add_card"
@@ -240,18 +266,23 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/task_item_divider_height"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/task_div" />
+
                 <TextView
                     android:id="@+id/btn_add_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/task_list_action_color"
+                    android:background="@color/task_bg"
                     android:elevation="@dimen/task_item_add_card_text_elevation"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"
-                    android:layout_marginTop="10dp"
                     android:padding="16dp"
                     android:text="@string/task_action_add_card"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/white_dark"
                     android:textSize="@dimen/task_item_add_item_text_size"
                     tools:visibility="visible" />
             </LinearLayout>

@@ -20,6 +20,7 @@
     <!-- 상단바 제목 -->
     <style name="CustomToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <!-- 메인 화면 상단바 제목 -->
@@ -97,4 +98,9 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/fromm_3</item>
     </style>
+
+    <style name="EditTextUnderlineStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+    </style>
+
 </resources>

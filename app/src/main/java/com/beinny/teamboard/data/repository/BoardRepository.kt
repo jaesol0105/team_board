@@ -1,5 +1,6 @@
 package com.beinny.teamboard.data.repository
 
+import android.app.Activity
 import android.net.Uri
 import com.beinny.teamboard.data.model.Board
 import com.beinny.teamboard.data.model.User
@@ -29,7 +30,9 @@ class BoardRepository(
     }
 
     /** 로그아웃 및 sharedPreference 초기화 */
-    fun signOut() {
+    suspend fun signOut() {
+        // auth.signOut() 전에 매핑 해제 + 토큰 삭제
+        remote.detachAndDeleteFcmTokenForCurrentUser()
         remote.signOut()
         sharedPrefs.clearAll()
     }
@@ -106,4 +109,33 @@ class BoardRepository(
     suspend fun assignMemberToBoard(board: Board) {
         remote.assignMemberToBoard(board)
     }
+
+    /** 카카오 SSO 로그인 */
+    suspend fun signInWithKakaoSso(activity: Activity): Boolean {
+        // OIDC 로그인
+        val user = remote.signInWithKakaoSsoOidc(activity) ?: return false
+
+        // 프로필 구성
+        val profile = remote.fetchKakaoProfile()
+
+        val newUser = User(
+            id = user.uid,
+            name = user.displayName ?: profile?.nickname ?: "",
+            email = user.email ?: profile?.email ?: "",
+            image = (user.photoUrl?.toString() ?: profile?.profileImageUrl.orEmpty()).forceHttps(),
+            // mobile은 초기 0 유지, fcmToken은 getFcmTokenAndUpdate()가 저장
+        )
+        remote.registerUser(newUser)
+
+        // FCM 토큰 갱신/저장
+        val fcmUpdated = remote.getFcmTokenAndUpdate()
+        // SharedPrefs 플래그(중복 갱신 방지용) 사용 중이면 세팅
+        sharedPrefs.setFcmTokenUpdated(fcmUpdated)
+
+        return true
+    }
+
+    /** http to https */
+    private fun String.forceHttps(): String =
+        if (startsWith("http://")) replaceFirst("http://", "https://") else this
 }

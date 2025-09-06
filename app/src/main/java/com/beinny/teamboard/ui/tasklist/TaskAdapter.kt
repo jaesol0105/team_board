@@ -108,8 +108,10 @@ open class TaskAdapter (
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 this.adapter = adapter
+                /*
                 if (itemDecorationCount == 0) // 중복생성 방지
                     addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+                */
             }
 
             val touchHelper = ItemTouchHelper(

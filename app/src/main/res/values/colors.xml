@@ -47,4 +47,8 @@
     <color name="fromm_3">#d5d6da</color>
     <color name="fromm_4">#7c7e88</color>
     <color name="fromm_5">#26282e</color>
+
+    <color name="task_bg">#37393E</color>
+    <color name="card_bg">#43464B</color>
+    <color name="task_div">#2f2f2f</color>
 </resources>
