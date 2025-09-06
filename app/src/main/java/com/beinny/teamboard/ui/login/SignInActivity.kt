@@ -38,6 +38,9 @@ class SignInActivity : BaseActivity() {
                 viewModel.signIn(email, password)
             }
         }
+        binding.btnSignInKakao.setOnClickListener {
+            viewModel.signInWithKakaoSso(this)
+        }
     }
 
     private fun setupObservers() {

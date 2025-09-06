@@ -54,7 +54,7 @@
     <!--task list-->
     <string name="task_action_add_list">작업 목록 추가</string>
     <string name="task_hint_list_name">제목 없음</string>
-    <string name="task_action_add_card">새 작업</string>
+    <string name="task_action_add_card">새 작업 추가</string>
     <string name="task_hint_card_name">Card Name</string>
     <string name="task_warning_message_delete_task">이 리스트를 삭제할까요?\n되돌릴 수 없습니다</string>
     <string name="task_add_list">Add List</string>

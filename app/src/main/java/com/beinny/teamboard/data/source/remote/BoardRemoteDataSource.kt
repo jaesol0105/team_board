@@ -1,8 +1,10 @@
 package com.beinny.teamboard.data.source.remote
 
+import android.app.Activity
 import android.net.Uri
 import android.util.Log
 import com.beinny.teamboard.data.model.Board
+import com.beinny.teamboard.data.model.KakaoProfile
 import com.beinny.teamboard.data.model.User
 import com.beinny.teamboard.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -12,10 +14,25 @@ import com.google.firebase.firestore.SetOptions
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.resumeWithException
+import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.user.UserApiClient
+import com.google.firebase.auth.OAuthProvider
+import com.kakao.sdk.common.model.ClientError
+import com.kakao.sdk.common.model.ClientErrorCause
+import java.util.concurrent.CancellationException
+import java.util.concurrent.atomic.AtomicBoolean
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class BoardRemoteDataSource {
+    companion object {
+        const val TAG = "BoardRemoteDataSource"
+    }
+
     private val firestore = FirebaseFirestore.getInstance()
     private val firebaseMessaging = FirebaseMessaging.getInstance()
     private val auth = FirebaseAuth.getInstance()
@@ -64,7 +81,7 @@ class BoardRemoteDataSource {
     }
 
     suspend fun updateBookmarks(userId: String, bookmarkBoards: ArrayList<String>) = withContext(Dispatchers.IO) {
-        val bookmarkMap = HashMap<String,Any>()
+        val bookmarkMap = HashMap<String, Any>()
         bookmarkMap[Constants.BOOKMARKED_BOARDS] = bookmarkBoards
         firestore.collection(Constants.USERS)
             .document(userId)
@@ -157,7 +174,7 @@ class BoardRemoteDataSource {
             .get()
             .await()
 
-        val doc = snapshot.documents.firstOrNull()?: throw Exception("user not found")
+        val doc = snapshot.documents.firstOrNull() ?: throw Exception("user not found")
         return@withContext doc.toObject(User::class.java) ?: throw Exception("invalid user data")
     }
 
@@ -170,5 +187,145 @@ class BoardRemoteDataSource {
             .document(board.documentId)
             .update(assignedToHashMap)
             .await()
+    }
+
+    /** OIDC + 기본 프로필용 권장 스코프 */
+    private val requiredScopes = listOf("openid", "profile_nickname", "profile_image", "account_email")
+
+    /** 카카오 로그인(OIDC 보장): 성공 시 idToken 포함된 OAuthToken 반환
+     * 카톡 SSO 우선, 실패 시 계정 로그인 */
+    suspend fun loginWithKakaoOidc(activity: Activity): OAuthToken =
+        suspendCoroutine { cont ->
+            // 원자성 보장
+            val once = AtomicBoolean(false)
+            fun safeResume(block: () -> Unit) {
+                if (once.compareAndSet(false, true)) block()
+            }
+
+            fun ensureIdTokenOrRequestScopes(initialToken: OAuthToken) {
+                // 이미 idToken 있으면 바로 resume 하고 끝
+                if (!initialToken.idToken.isNullOrBlank()) {
+                    safeResume { cont.resume(initialToken) }
+                    return
+                }
+                // 없으면 추가 스코프 동의 요청
+                UserApiClient.instance.loginWithNewScopes(activity, requiredScopes) { t2, e2 ->
+                    when {
+                        e2 is ClientError && e2.reason == ClientErrorCause.Cancelled ->
+                            safeResume { cont.resumeWithException(CancellationException("사용자 취소(스코프 동의)")) }
+
+                        e2 != null ->
+                            safeResume { cont.resumeWithException(e2) }
+
+                        t2?.idToken.isNullOrBlank() ->
+                            safeResume { cont.resumeWithException(IllegalStateException("스코프 동의 후에도 idToken 없음")) }
+
+                        else ->
+                            safeResume { cont.resume(t2!!) }
+                    }
+                }
+            }
+
+            // 공통 콜백 : 카카오계정 로그인
+            val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
+                when {
+                    error is ClientError && error.reason == ClientErrorCause.Cancelled ->
+                        safeResume { cont.resumeWithException(CancellationException("사용자 취소(계정)")) }
+
+                    error != null ->
+                        safeResume { cont.resumeWithException(error) }
+
+                    token == null ->
+                        safeResume { cont.resumeWithException(IllegalStateException("카카오계정 로그인: 토큰 없음")) }
+
+                    else ->
+                        ensureIdTokenOrRequestScopes(token)
+                }
+            }
+
+            // 카카오톡 앱 로그인 우선
+            if (UserApiClient.instance.isKakaoTalkLoginAvailable(activity)) {
+                UserApiClient.instance.loginWithKakaoTalk(activity) { token, error ->
+                    when {
+                        // 에러 : 사용자가 직접 취소한 경우
+                        error is ClientError && error.reason == ClientErrorCause.Cancelled ->
+                            safeResume { cont.resumeWithException(CancellationException("사용자 취소(카톡)")) }
+                        // 에러 : 실패한 경우
+                        error != null -> {
+                            UserApiClient.instance.loginWithKakaoAccount(activity, callback = callback)
+                        }
+                        // 토큰이 없는 경우
+                        token == null -> {
+                            UserApiClient.instance.loginWithKakaoAccount(activity, callback = callback)
+                        }
+                        // 성공한 경우
+                        else -> ensureIdTokenOrRequestScopes(token)
+                    }
+                }
+            }
+            // 카카오톡 앱이 없을 경우 : 카카오계정 로그인
+            else {
+                UserApiClient.instance.loginWithKakaoAccount(activity, callback = callback)
+            }
+        }
+
+    /** OIDC Credential 생성 + Firebase 로그인 */
+    suspend fun signInWithKakaoSsoOidc(activity: Activity): FirebaseUser? {
+        val token = loginWithKakaoOidc(activity) // Kakao SDK에서 토큰 받기
+        val idToken = token.idToken // OIDC id_token (필수)
+        val accessToken = token.accessToken // 사용자 정보 (옵션)
+
+        if (idToken.isNullOrEmpty()) {
+            throw IllegalStateException("Kakao idToken is missing. Ensure 'openid' scope is granted.")
+        }
+
+        /** providerId, idToken, accessToken */
+        val credential = OAuthProvider.getCredential("oidc.kakao", idToken, accessToken)
+
+        val result = auth.signInWithCredential(credential).await()
+        return result.user
+    }
+
+
+    /** 카카오 프로필 가져오기 — 이메일/닉네임/프사 */
+    suspend fun fetchKakaoProfile(): KakaoProfile? = suspendCancellableCoroutine { cont ->
+        UserApiClient.instance.me { user, error ->
+            if (!cont.isActive) return@me // 코루틴이 이미 취소됐다면 무시
+
+            if (error != null) {
+                cont.resumeWithException(error) // 실패는 예외로 던짐
+                return@me
+            }
+
+            val acc = user?.kakaoAccount
+            cont.resume(
+                KakaoProfile(
+                    email = acc?.email,
+                    nickname = acc?.profile?.nickname,
+                    profileImageUrl = acc?.profile?.profileImageUrl
+                )
+            )
+        }
+    }
+
+    /** 로그아웃 시 토큰 제거 */
+    suspend fun detachAndDeleteFcmTokenForCurrentUser(): Boolean = withContext(Dispatchers.IO) {
+        try {
+            val uid = getCurrentUserId()
+            // 현재 토큰 조회
+            val token = firebaseMessaging.token.await()
+
+            // 사용자 문서에서 이 토큰 매핑 해제
+            val updates = hashMapOf<String, Any>()
+            updates[Constants.FCM_TOKEN] = ""
+            firestore.collection(Constants.USERS).document(uid).update(updates).await()
+
+            // 기기 토큰 삭제 (이전 토큰 무효화)
+            FirebaseMessaging.getInstance().deleteToken().await()
+            true
+        } catch (e: Exception) {
+            Log.e("BoardRemoteDataSource", "FCM 토큰 해제/삭제 실패", e)
+            false
+        }
     }
 }

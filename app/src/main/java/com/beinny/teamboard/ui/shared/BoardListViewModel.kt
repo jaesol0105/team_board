@@ -134,7 +134,9 @@ class BoardListViewModel(
 
     /** 로그아웃 및 sharedPreference 초기화 */
     fun signOut(onComplete : () -> Unit) {
-        boardRepository.signOut()
+        viewModelScope.launch {
+            boardRepository.signOut()
+        }
         onComplete()
     }
 }

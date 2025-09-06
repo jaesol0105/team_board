@@ -10,6 +10,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.beinny.teamboard.R
 import com.beinny.teamboard.data.model.Card
 import com.beinny.teamboard.data.model.Task
@@ -68,6 +69,7 @@ class TaskListActivity : BaseActivity(), TaskListListener {
                     members = viewModel.members,
                     listener = this@TaskListActivity)
                 binding.rvTaskList.apply{
+                    setRecyclerViewStartSpacing()
                     layoutManager = LinearLayoutManager(this@TaskListActivity, LinearLayoutManager.HORIZONTAL, false)
                     setHasFixedSize(true)
                     adapter = taskListAdapter
@@ -146,5 +148,13 @@ class TaskListActivity : BaseActivity(), TaskListListener {
     /** 카드 순서 재배치 */
     override fun onCardsReordered(taskPosition: Int, cards: ArrayList<Card>) {
         viewModel.reorderCardsInTaskList(taskPosition, cards)
+    }
+
+    /** recyclerView 맨 앞 마진 설정 */
+    private fun RecyclerView.setRecyclerViewStartSpacing() {
+        if (binding.rvTaskList.itemDecorationCount == 0) {
+            val spacingPx = resources.getDimensionPixelSize(R.dimen.task_item_start_spacing)
+            addItemDecoration(TaskStartSpacingItemDecoration(spacingPx))
+        }
     }
 }
