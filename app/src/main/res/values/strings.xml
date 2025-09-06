@@ -23,6 +23,9 @@
     <string name="name">사용자 이름</string>
     <string name="password">비밀번호</string>
     <string name="email">이메일</string>
+    <string name="invalid_name">이름은 2~30자, 한글/영문만 입력해 주세요.</string>
+    <string name="invalid_email">올바른 이메일 형식이 아닙니다.</string>
+    <string name="invalid_password">비밀번호는 6자 이상 입력해 주세요.</string>
 
     <!--sign in-->
     <string name="sign_in_description_text">사용자 이름과 이메일, 비밀번호를 입력하세요</string>

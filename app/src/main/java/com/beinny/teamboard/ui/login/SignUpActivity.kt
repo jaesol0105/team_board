@@ -39,7 +39,7 @@ class SignUpActivity : BaseActivity() {
             val password: String = binding.etSignUpPassword.text.toString().trim { it <= ' ' }
             if (validateForm(name,email,password)){
                 viewModel.signUp(name, email, password)
-                }
+            }
         }
     }
 
@@ -65,22 +65,30 @@ class SignUpActivity : BaseActivity() {
     }
 
     private fun validateForm(name: String, email: String, password: String): Boolean {
+        val n = name.trim()
+        val e = email.trim().lowercase() // 소문자로 변환
+        val p = password.trim()
+
         return when {
-            TextUtils.isEmpty(name) -> {
-                showErrorSnackBar(getString(R.string.please_input_name))
-                false
+            n.isEmpty() -> {
+                showErrorSnackBar(getString(R.string.please_input_name)); false
             }
-            TextUtils.isEmpty(email) -> {
-                showErrorSnackBar(getString(R.string.please_input_email))
-                false
+            !RegexRules.NAME.matches(n) -> {
+                showErrorSnackBar(getString(R.string.invalid_name)); false
             }
-            TextUtils.isEmpty(password) -> {
-                showErrorSnackBar(getString(R.string.please_input_password))
-                false
+            e.isEmpty() -> {
+                showErrorSnackBar(getString(R.string.please_input_email)); false
             }
-            else -> {
-                true
+            !RegexRules.EMAIL.matches(e) -> {
+                showErrorSnackBar(getString(R.string.invalid_email)); false
             }
+            p.isEmpty() -> {
+                showErrorSnackBar(getString(R.string.please_input_password)); false
+            }
+            !RegexRules.PASSWORD.matches(p) -> {
+                showErrorSnackBar(getString(R.string.invalid_password)); false
+            }
+            else -> true
         }
     }
 }
