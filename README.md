@@ -45,8 +45,8 @@
 ## Features
 * 개요
   * 프로젝트 별로 일정을 관리/공유 할 수 있는 협업 애플리케이션
-  * 사용자는 여러 프로젝트를 생성할 수 있고, 프로젝트 별로 멤버를 초대할 수 있다
-  * 큰 작업 단위인 Task, 개별 작업 단위인 Card를 통해 체계적인 일정 관리가 가능하다
+  * 사용자는 여러 프로젝트를 생성할 수 있고, 멤버를 초대 할 수 있음
+  * 큰 작업 단위인 Task, 개별 작업 단위인 Card를 통해 체계적인 일정 관리
 
 * 주요 기능
   * 이메일을 통한 프로젝트 멤버 초대
@@ -63,7 +63,7 @@
 * Kakao SDK + Firebase OIDC 카카오 SSO 로그인 구현
 * 유저/보드/태스크/카드 데이터에 대한 CRUD (Firebase)
   * 이미지 압축 및 업로드
-* Firebase Device Token 기반 앱 푸시 알림 구
+* Firebase Device Token 기반 앱 푸시 알림 구현
 * UI/UX
   * Jetpack Navigation을 이용한 화면 이동 구현
   * BottomSheetDialog를 활용한 DateTimePicker 등의 UI 컴포넌트 적용
