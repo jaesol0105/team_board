@@ -36,29 +36,25 @@
   * Cloud Firestore
   * Firebase Cloud Messaging
 
-* Image Loading
+* Library
   * Glide
+  * Oauth 2.0
 
 * Compose
   * Material Design
 
 ## Features
-* 개요
-  * 프로젝트 별로 일정을 관리/공유 할 수 있는 협업 애플리케이션
-  * 사용자는 여러 프로젝트를 생성할 수 있고, 멤버를 초대 할 수 있음
-  * 큰 작업 단위인 Task, 개별 작업 단위인 Card를 통해 체계적인 일정 관리
-
 * 주요 기능
-  * 이메일을 통한 프로젝트 멤버 초대
-  * 프로젝트 초대 앱 푸시 알림
-  * 북마크 추가 및 해제 기능
-  * 작업 별 진행률 표시 라벨 설정
-  * 작업 별 멤버 역할 배정
-  * 작업 별 마감일 설정
+  * Email 로그인 / 카카오 SSO 로그인
   * 프로필 편집
+  * 프로젝트 보드, 태스크, 카드 CRUD
+  * 이메일을 통한 프로젝트 멤버 초대
+  * 작업 별 진행률 라벨과 마감일 설정
+  * 작업 별 멤버 역할 배정
+  * 북마크 추가 및 해제
     
 ## Developing
-* MVVM 아키텍쳐
+* MVVM 아키텍쳐 적용
 * Coroutine + Flow 비동기 처리 구조
 * Kakao SDK + Firebase OIDC 카카오 SSO 로그인 구현
 * 유저/보드/태스크/카드 데이터에 대한 CRUD (Firebase)
