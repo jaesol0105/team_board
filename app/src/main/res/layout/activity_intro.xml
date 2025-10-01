@@ -24,7 +24,7 @@
             android:id="@+id/tv_intro_app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/intro_screen_title_text_marginTop"
+            android:layout_marginTop="90dp"
             android:text="@string/team_board"
             style="@style/CustomToolbarTitleMain"
             android:textColor="@color/white"
@@ -94,7 +94,7 @@
             android:textSize="@dimen/btn_text_size" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_login_button_kakao"
+            android:id="@+id/btn_sign_in_kakao"
             android:layout_gravity="center"
             android:layout_marginStart="24dp"
             android:layout_marginTop="@dimen/intro_screen_title_text_marginTop"
@@ -131,7 +131,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_login_button_email"
+            android:id="@+id/btn_sign_in_email"
             android:layout_gravity="center"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
