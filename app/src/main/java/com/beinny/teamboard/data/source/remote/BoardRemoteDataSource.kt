@@ -54,9 +54,16 @@ class BoardRemoteDataSource {
     }
 
     suspend fun registerUser(user: User) = withContext(Dispatchers.IO) {
+        val data = mutableMapOf<String, Any>()
+        data["id"] = user.id
+        // 값이 비어있지 않을 때만 넣기 (카카오 로그인 시 초기화 되는 것 방지)
+        if (user.name.isNotBlank()) data["name"] = user.name
+        if (user.email.isNotBlank()) data["email"] = user.email
+        if (user.image.isNotBlank()) data["image"] = user.image
+
         firestore.collection(Constants.USERS)
             .document(user.id)
-            .set(user, SetOptions.merge()) // SetOptions.merge : 기존 데이터와 병합
+            .set(data, SetOptions.merge()) // SetOptions.merge : 기존 데이터와 병합
             .await()
     }
 
