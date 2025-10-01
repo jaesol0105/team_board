@@ -4,7 +4,7 @@
 
     <!--intro-->
     <dimen name="intro_screen_title_text_size">40sp</dimen>
-    <dimen name="intro_screen_title_text_marginTop">40dp</dimen>
+    <dimen name="intro_screen_title_text_marginTop">80dp</dimen>
     <dimen name="intro_screen_image_marginTop">30dp</dimen>
     <dimen name="lets_get_started_text_marginTop">25dp</dimen>
     <dimen name="lets_get_started_text_size">25sp</dimen>
