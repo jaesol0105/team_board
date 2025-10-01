@@ -31,10 +31,9 @@ class BoardRepository(
 
     /** 로그아웃 및 sharedPreference 초기화 */
     suspend fun signOut() {
-        // auth.signOut() 전에 매핑 해제 + 토큰 삭제
-        remote.detachAndDeleteFcmTokenForCurrentUser()
-        remote.signOut()
         sharedPrefs.clearAll()
+        // 기기 매핑 해제 + 토큰 삭제 후 로그아웃
+        remote.logoutAndClearFcmToken()
     }
 
     suspend fun loadUserData(): User = remote.loadUserData()

@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.beinny.teamboard.data.source.local.SharedPrefsHelper
 import com.beinny.teamboard.databinding.ActivitySplashBinding
 import com.beinny.teamboard.data.source.remote.firebase.FirestoreClass
 import com.beinny.teamboard.ui.common.hideStatusBar
@@ -12,6 +13,7 @@ import com.beinny.teamboard.ui.common.launch
 import com.beinny.teamboard.ui.common.setCustomFont
 import com.beinny.teamboard.ui.main.MainActivity
 import com.beinny.teamboard.ui.login.IntroActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

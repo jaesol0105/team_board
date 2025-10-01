@@ -30,6 +30,7 @@ object Constants {
     // SharedPreference
     const val TEAMBOARD_PREFERENCES = "Teamboard_preference"
     const val FCM_TOKEN_UPDATED:String = "fcmTokenUpdated"
+    const val KEY_AUTO_LOGIN_ENABLED:String = "keyAutoLoginEnabled"
 
     // FCM
     const val FCM_HTTP_V1_API_URL: String = "https://fcm.googleapis.com/v1/projects/teamboard-1451c/messages:send"

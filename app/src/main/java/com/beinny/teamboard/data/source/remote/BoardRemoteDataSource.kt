@@ -315,20 +315,34 @@ class BoardRemoteDataSource {
         }
     }
 
-    /** 로그아웃 시 토큰 제거 */
-    suspend fun detachAndDeleteFcmTokenForCurrentUser(): Boolean = withContext(Dispatchers.IO) {
+    /** 기기 토큰 제거 및 로그아웃, 카카오 SDK 세션 종료(재로그인방지) */
+    suspend fun logoutAndClearFcmToken(): Boolean = withContext(Dispatchers.IO) {
         try {
             val uid = getCurrentUserId()
+
             // 현재 토큰 조회
             val token = firebaseMessaging.token.await()
 
-            // 사용자 문서에서 이 토큰 매핑 해제
+            // 사용자 문서에서 현재 토큰 매핑 해제
             val updates = hashMapOf<String, Any>()
             updates[Constants.FCM_TOKEN] = ""
             firestore.collection(Constants.USERS).document(uid).update(updates).await()
 
             // 기기 토큰 삭제 (이전 토큰 무효화)
             FirebaseMessaging.getInstance().deleteToken().await()
+
+            // 카톡 세션을 끊어야 SSO로 자동 로그인되지 않음
+            suspendCancellableCoroutine { cont ->
+                // logout : 세션만 종료 (unlink : 계정 연결 자체를 끊음)
+                UserApiClient.instance.logout { error ->
+                    if (error != null) {}
+                    if (cont.isActive) cont.resume(Unit) {}
+                }
+            }
+
+            // FirebaseAuth 세션 종료
+            signOut()
+
             true
         } catch (e: Exception) {
             Log.e("BoardRemoteDataSource", "FCM 토큰 해제/삭제 실패", e)

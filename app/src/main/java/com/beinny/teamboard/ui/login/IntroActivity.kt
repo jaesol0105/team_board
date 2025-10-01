@@ -41,11 +41,6 @@ class IntroActivity : BaseActivity() {
         binding.btnSignInEmail.setOnClickListener {
             launch<SignInActivity>()
         }
-        /*
-        binding.btnIntroSignUp.setOnClickListener {
-            launch<SignUpActivity>()
-        }
-        */
     }
 
     private fun setupObservers() {
