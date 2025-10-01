@@ -1,5 +1,6 @@
 package com.beinny.teamboard.ui.login
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.activity.viewModels
@@ -40,6 +41,12 @@ class SignInActivity : BaseActivity() {
         }
         binding.btnSignInKakao.setOnClickListener {
             viewModel.signInWithKakaoSso(this)
+        }
+        binding.btnSignUp.apply {
+            paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            setOnClickListener {
+                launch<SignUpActivity>()
+            }
         }
     }
 
